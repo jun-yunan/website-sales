@@ -13,7 +13,7 @@ const Auth: FunctionComponent<AuthProps> = () => {
     console.log(session?.user);
 
     if (session && session.user) {
-        Cookies.set('accessToken', session?.user.accessToken || '' || session.user.name);
+        Cookies.set('accessToken', session?.user.accessToken || '');
         return (
             <div className="flex items-center">
                 <div className="w-[50px] h-[50px] rounded-[50%] flex overflow-hidden items-center justify-center">

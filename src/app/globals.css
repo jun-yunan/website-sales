@@ -17,6 +17,9 @@
 }
 
 body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
     color: rgb(var(--foreground-rgb));
     background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
         rgb(var(--background-start-rgb));
@@ -25,5 +28,19 @@ body {
 @layer components {
     .btn-primary {
         @apply text-lg py-2 px-4 bg-sky-500 text-white font-semibold rounded-lg shadow-lg hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75;
+    }
+
+    .text-color {
+        @apply text-[#161617];
+    }
+    .color-primary {
+        @apply text-[#161617];
+    }
+
+    .btn-light {
+        @apply flex items-center justify-center py-3 px-8 rounded-full border-2 border-black text-xl text-[#1d1d1f] font-semibold hover:bg-[#1d1d1f] hover:text-white transition-all duration-500 ease-in-out hover:cursor-pointer;
+    }
+    .btn-dark {
+        @apply flex items-center justify-center py-3 px-8 rounded-full hover:border-2 hover:border-[#1d1d1f] bg-[#1d1d1f] text-xl text-white font-semibold hover:bg-white hover:text-black transition-all duration-500 ease-in-out hover:cursor-pointer;
     }
 }

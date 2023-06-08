@@ -9,7 +9,7 @@ import { userService } from '@/services';
 
 const schema = yup
     .object({
-        fullName: yup
+        name: yup
             .string()
             .required('Full name is a required field')
             .min(10, 'Full name must be at least 10 characters'),
@@ -17,8 +17,14 @@ const schema = yup
         email: yup.string().email().required(),
         password: yup
             .string()
-            .min(8, 'Password should be 8-20 characters')
-            .max(20, 'Password should be 8-20 characters')
+            .min(
+                8,
+                'Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!'
+            )
+            .max(
+                20,
+                'Password should be 8-20 characters and include at least 1 letter, 1 number and 1 special character!'
+            )
             .required('Password is a required field')
             .matches(
                 /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]/,
@@ -32,14 +38,14 @@ const schema = yup
     .required();
 
 type Inputs = {
-    fullName: string;
+    name: string;
     email: string;
     password: string;
     confirmPassword: string;
 };
 
 export interface FormDataState {
-    fullName: string;
+    name: string;
     email: string;
     password: string;
 }
@@ -50,7 +56,7 @@ function Form() {
     const [signUp, setSignUp] = useState(null);
     const form = useForm<Inputs>({
         defaultValues: {
-            fullName: '',
+            name: '',
             email: '',
             password: '',
             confirmPassword: '',
@@ -92,7 +98,7 @@ function Form() {
             <div>
                 <form onSubmit={form.handleSubmit(submitForm)} className="flex flex-col">
                     <div className="m-3 bg-slate-50">
-                        <InputField type="text" name="fullName" label="Full Name" form={form} />
+                        <InputField type="text" name="name" label="Full Name" form={form} />
                     </div>
                     <div className="m-3 bg-slate-50">
                         <InputField type="text" name="email" label="Email" form={form} />

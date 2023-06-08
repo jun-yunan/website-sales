@@ -1,13 +1,16 @@
 'use client';
 
 import { signIn } from 'next-auth/react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { useAppSelector } from '@/redux/store';
 import ButtonLogin from '@/components/ButtonLogin';
 import { FormEvent, FunctionComponent, useState } from 'react';
+import { AppDispatch } from '@/redux/store';
 
 interface SignInProps {}
 
 const SignIn: FunctionComponent<SignInProps> = () => {
+    const dispatch = useDispatch<AppDispatch>();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
