@@ -23,33 +23,33 @@ const Header: FunctionComponent<HeaderProps> = () => {
         router.push('/');
     };
     return (
-        <div className="flex items-center justify-between h-[60px] w-[70%] text-white  phone:bg-cyan-200 bg-[#161617] overflow-hidden">
+        <div className="flex items-center justify-between h-[60px] w-[60%] text-white  phone:bg-cyan-200 bg-[#161617] overflow-hidden">
             <div className="cursor-pointer" onClick={handleNavigation}>
                 <ShoppingBagIcon style={{ fontSize: '40px' }} />
             </div>
             <Link href={'/store'} className=" phone:hidden text-sm font-medium">
-                <DropdownTippy>Cửa hàng</DropdownTippy>
+                <DropdownTippy type="store">Cửa hàng</DropdownTippy>
             </Link>
             <div className=" phone:hidden text-sm font-medium">
-                <DropdownTippy>Mac</DropdownTippy>
+                <DropdownTippy type="mac">Mac</DropdownTippy>
             </div>
             <div className=" phone:hidden text-sm font-medium">
-                <DropdownTippy>iPad</DropdownTippy>
+                <DropdownTippy type="ipad">iPad</DropdownTippy>
             </div>
             <div className=" phone:hidden text-sm font-medium">
-                <DropdownTippy>iPhone</DropdownTippy>
+                <DropdownTippy type="iphone">iPhone</DropdownTippy>
             </div>
             <div className=" phone:hidden text-sm font-medium">
-                <DropdownTippy>Watch</DropdownTippy>
+                <DropdownTippy type="watch">Watch</DropdownTippy>
             </div>
             <div className=" phone:hidden text-sm font-medium">
-                <DropdownTippy>AirPods</DropdownTippy>
+                <DropdownTippy type="airpods">AirPods</DropdownTippy>
             </div>
             <div className=" phone:hidden text-sm font-medium">
-                <DropdownTippy>Tv</DropdownTippy>
+                <DropdownTippy type="tv">Tv</DropdownTippy>
             </div>
             <div className=" phone:hidden text-sm font-medium">
-                <DropdownTippy>Phụ kiện</DropdownTippy>
+                <DropdownTippy type="component">Phụ kiện</DropdownTippy>
             </div>
 
             <div className=" text-black flex focus-within:w-[200px] w-[100px] items-center bg-white overflow-hidden rounded-xl transition-all duration-500 ease-in-out">
