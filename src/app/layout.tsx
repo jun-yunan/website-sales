@@ -16,8 +16,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className={inter.className}>
-                <ReduxProvider>
-                    <NextAuthProvider>
+                <NextAuthProvider>
+                    <ReduxProvider>
                         <main className="w-screen h-screen flex flex-col items-center bg-zinc-500 overflow-auto">
                             <header className="w-full flex justify-center bg-[#161617] items-center mb-[60px]">
                                 <div className="w-[98.9%] fixed z-50 top-0 left-0 bg-[#161617] flex justify-center items-center">
@@ -29,8 +29,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                                 <Footer />
                             </footer>
                         </main>
-                    </NextAuthProvider>
-                </ReduxProvider>
+                    </ReduxProvider>
+                </NextAuthProvider>
             </body>
         </html>
     );

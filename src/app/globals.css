@@ -33,9 +33,6 @@ body {
     .text-color {
         @apply text-[#161617];
     }
-    .color-primary {
-        @apply text-[#161617];
-    }
 
     .btn-light {
         @apply flex items-center justify-center py-3 px-8 rounded-full border-2 border-black text-xl text-[#1d1d1f] font-semibold hover:bg-[#1d1d1f] hover:text-white transition-all duration-500 ease-in-out hover:cursor-pointer;
@@ -43,4 +40,54 @@ body {
     .btn-dark {
         @apply flex items-center justify-center py-3 px-8 rounded-full hover:border-2 hover:border-[#1d1d1f] bg-[#1d1d1f] text-xl text-white font-semibold hover:bg-white hover:text-black transition-all duration-500 ease-in-out hover:cursor-pointer;
     }
+
+    .title-sm {
+        @apply text-3xl font-semibold text-[#161617];
+    }
+
+    .title-sm-dark {
+        @apply text-3xl font-semibold text-white;
+    }
+}
+
+.slick-prev {
+    left: -42px !important;
+}
+/* custom */
+.slick-prev,
+.slick-next {
+    font-size: 0;
+    line-height: 1.6 !important;
+    position: absolute;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    margin: auto !important;
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: red !important;
+    border: none;
+    outline: none;
+    background: rgba(68, 68, 68, 0.6) !important;
+    padding: 10px !important;
+    z-index: 10 !important;
+}
+
+.slick-prev:hover,
+.slick-next:hover {
+    background-color: rgba(68, 68, 68, 0.4) !important;
+    transition: 0.4s ease-in-out;
+}
+
+.slick-prev::before,
+.slick-next::before {
+    top: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    font-size: 35px !important;
 }

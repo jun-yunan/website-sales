@@ -8,10 +8,10 @@ const NavbarItemTv: FunctionComponent<NavbarItemTvProps> = () => {
         <div className="w-[60%] h-full flex pb-[30px] justify-between">
             <div className="flex flex-col">
                 <h2 className="text-sm font-light my-4">Khám Phá TV</h2>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Khám Phá Tất Cả TV
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Apple TV 4K
                 </Link>
             </div>

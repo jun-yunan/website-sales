@@ -8,19 +8,19 @@ const NavbarItemAirPods: FunctionComponent<NavbarItemAirPodsProps> = () => {
         <div className="w-[60%] h-full flex pb-[30px] justify-between">
             <div className="flex flex-col">
                 <h2 className="text-sm font-light my-4">Khám Phá AirPods</h2>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Khám Phá Tất Cả AirPods
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     AirPods (thế hệ thứ 2)
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     AirPods (thế hệ thứ 3)
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     AirPods Pro (thế hệ thứ 2)
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     AirPods Max
                 </Link>
             </div>

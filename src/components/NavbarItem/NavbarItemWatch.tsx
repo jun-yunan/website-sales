@@ -8,19 +8,19 @@ const NavbarItemWatch: FunctionComponent<NavbarItemWatchProps> = () => {
         <div className="w-[60%] h-full flex pb-[30px] justify-between">
             <div className="flex flex-col">
                 <h2 className="text-sm font-light my-4">Khám Phá Watch</h2>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Khám Phá Tất Cả Apple Watch
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Apple Watch Ultra
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Apple Watch Series 8
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Apple Watch SE
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Apple Watch NIKE
                 </Link>
             </div>

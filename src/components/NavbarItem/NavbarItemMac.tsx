@@ -8,28 +8,28 @@ const NavbarItemMac: FunctionComponent<NavbarItemMacProps> = () => {
         <div className="w-[60%] h-full flex pb-[30px] justify-between">
             <div className="flex flex-col">
                 <h2 className="text-sm font-light my-4">Khám Phá Mac</h2>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Khám Phá Tất Cả Mac
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     MacBook Air
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     MacBook Pro
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     iMac
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Mac mini
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Mac Studio
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Mac Pro
                 </Link>
-                <Link href={'#'} className="text-3xl font-medium leading-normal">
+                <Link href={'#'} className="text-2xl font-medium leading-normal">
                     Màn Hình
                 </Link>
             </div>

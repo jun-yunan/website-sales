@@ -4,6 +4,9 @@ import { signOut, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Button from './Button';
 import Cookies from 'js-cookie';
+import { faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Link from 'next/link';
 
 interface AuthProps {}
 
@@ -58,18 +61,19 @@ const Auth: FunctionComponent<AuthProps> = () => {
     }
 
     return (
-        <div className="flex">
+        <div className="flex flex-col">
             {status === 'loading' ? (
                 <div>Loading...</div>
             ) : (
                 <>
-                    <div className="mr-4">
-                        <Button href="/signIn">Sign In</Button>
-                    </div>
-
-                    <div>
-                        <Button href="/signUp">Sign Up</Button>
-                    </div>
+                    <Link href={'/signIn'} className="flex my-1 items-center">
+                        <FontAwesomeIcon className="mr-2" icon={faUser} />
+                        <p>Đăng nhập</p>
+                    </Link>
+                    <Link href={'/signUp'} className="flex my-1 items-center">
+                        <FontAwesomeIcon className="mr-2" icon={faUserPlus} />
+                        <p>Đăng ký</p>
+                    </Link>
                 </>
             )}
         </div>

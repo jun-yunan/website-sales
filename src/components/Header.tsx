@@ -30,9 +30,9 @@ const Header: FunctionComponent<HeaderProps> = () => {
             <Link href={'/store'} className=" phone:hidden text-sm font-medium">
                 <DropdownTippy type="store">Cửa hàng</DropdownTippy>
             </Link>
-            <div className=" phone:hidden text-sm font-medium">
+            <Link href={'/mac'} className=" phone:hidden text-sm font-medium">
                 <DropdownTippy type="mac">Mac</DropdownTippy>
-            </div>
+            </Link>
             <div className=" phone:hidden text-sm font-medium">
                 <DropdownTippy type="ipad">iPad</DropdownTippy>
             </div>
@@ -62,26 +62,9 @@ const Header: FunctionComponent<HeaderProps> = () => {
             </div>
 
             <div className="flex items-center">
-                <div className="text-lg mr-2">
-                    <FontAwesomeIcon icon={faCartShopping} />
-                </div>
-                <Tippy
-                    interactive
-                    render={(attrs) => (
-                        <div
-                            className="bg-[#161617] h-[350px] w-screen translate-x-[-6px]"
-                            tabIndex={-1}
-                            {...attrs}
-                        >
-                            <Auth />
-                        </div>
-                    )}
-                >
-                    <button>
-                        {/* fdsfsfd */}
-                        <AccountCircleIcon />
-                    </button>
-                </Tippy>
+                <DropdownTippy type="auth">
+                    <AccountCircleIcon />
+                </DropdownTippy>
             </div>
         </div>
     );
