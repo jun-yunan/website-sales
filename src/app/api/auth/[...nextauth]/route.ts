@@ -1,8 +1,8 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
-import { IUser } from '@/types';
+// import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
+// import { IUser } from '@/types';
 // import clientPromise from '@/lib/mongodb';
 
 const handler = NextAuth({

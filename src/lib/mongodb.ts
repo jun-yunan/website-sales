@@ -1,19 +1,19 @@
-// // import mongoose from 'mongoose';
+import mongoose from 'mongoose';
 
-// // const { MONGODB_URI } = process.env;
+const { MONGODB_URI } = process.env;
 
-// // if (!MONGODB_URI) {
-// //     throw new Error('Invalid environment variable: MONGODB_URI');
-// // }
+if (!MONGODB_URI) {
+    throw new Error('Invalid environment variable: MONGODB_URI');
+}
 
-// // export const connectToMongoDB = async () => {
-// //     try {
-// //         const connect = await mongoose.connect(MONGODB_URI);
-// //         connect && console.log(`Connect database successfully!!!`);
-// //     } catch (error) {
-// //         console.log(error);
-// //     }
-// // };
+export const connectToMongoDB = async () => {
+    try {
+        const connect = await mongoose.connect(MONGODB_URI);
+        connect && console.log(`Connect database successfully!!!`);
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 // // This approach is taken from https://github.com/vercel/next.js/tree/canary/examples/with-mongodb
 // import { MongoClient } from 'mongodb';
