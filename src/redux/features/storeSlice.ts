@@ -1,4 +1,4 @@
-import { ItemProduct } from '@/app/store/page';
+// import { ItemProduct } from '@/app/store/page';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface InitState {
@@ -25,7 +25,7 @@ export const storeSlice = createSlice({
     name: 'store',
     initialState,
     reducers: {
-        getAllProduct: (state, action: PayloadAction<ItemProduct>) => {
+        getAllProduct: (state, action: PayloadAction<any>) => {
             state.values.products = action.payload;
         },
     },
