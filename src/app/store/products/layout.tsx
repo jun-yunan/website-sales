@@ -1,7 +1,6 @@
 import { FunctionComponent } from 'react';
 import Category from '@/components/Product/Category';
 import PageNumber from '@/components/Product/PageNumber';
-import Product from '@/components/Product/Product';
 import Resizable from '@/components/Product/Resizable';
 import BarPage from '@/components/Product/BarPage';
 
