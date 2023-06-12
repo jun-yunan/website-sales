@@ -41,12 +41,20 @@ body {
         @apply flex items-center justify-center py-3 px-8 rounded-full hover:border-2 hover:border-[#1d1d1f] bg-[#1d1d1f] text-xl text-white font-semibold hover:bg-white hover:text-black transition-all duration-500 ease-in-out hover:cursor-pointer;
     }
 
-    .title-sm {
+    .title-sm-dark {
         @apply text-3xl font-semibold text-[#161617];
     }
 
-    .title-sm-dark {
+    .title-sm-dark-light {
         @apply text-3xl font-semibold text-white;
+    }
+
+    .button-number {
+        @apply bg-[#161617] border-2 border-[#161617] rounded-2xl shadow-lg hover:bg-white hover:text-[#161617] transition-all duration-500 ease-in-out py-2 px-4 font-semibold text-lg;
+    }
+
+    .button-number-active {
+        @apply bg-[white] text-[#161617] border-2 border-[#161617] rounded-2xl shadow-lg hover:bg-[#161617] hover:text-[white] transition-all duration-500 ease-in-out py-2 px-4 font-semibold text-lg;
     }
 }
 

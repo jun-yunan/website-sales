@@ -1,14 +1,14 @@
+import { FunctionComponent } from 'react';
 import Category from '@/components/Product/Category';
 import PageNumber from '@/components/Product/PageNumber';
-import ProductItem from '@/components/Product/ProductItem';
+import Product from '@/components/Product/Product';
 import Resizable from '@/components/Product/Resizable';
 
-import { getProductData } from '@/utils/getProducts/product';
-import { PageProductsProps, ProductType } from '@/types/product';
+interface StoreLayoutProps {
+    children: React.ReactNode;
+}
 
-const Store = async ({ searchParams }: PageProductsProps) => {
-    const products: ProductType = await getProductData(searchParams);
-
+const StoreLayout: FunctionComponent<StoreLayoutProps> = ({ children }) => {
     return (
         <div className="w-full min-h-[700px] bg-[#f5f5f7] flex flex-col">
             <div className="w-full bg-white mx-auto py-[150px] flex flex-col items-center">
@@ -23,22 +23,13 @@ const Store = async ({ searchParams }: PageProductsProps) => {
                 <Resizable />
             </div>
 
-            <div className="w-full flex flex-col items-center min-h-[500px] pb-[150px] ">
+            <div className="w-full flex flex-col items-center min-h-[500px] p-[150px] bg-white">
                 <h2 className="title-sm-dark mx-auto mb-10">Tất cả sản phẩm</h2>
-                <div className="w-[80%] min-h-[500px] flex flex-wrap justify-center mb-[50px]">
-                    {products.products?.map((product) => (
-                        <ProductItem
-                            image={product.image}
-                            nameProduct={product.nameProduct}
-                            price={product.price}
-                            key={product._id}
-                        />
-                    ))}
-                </div>
-                <PageNumber searchParams={searchParams} />
+                {children}
+                <PageNumber />
             </div>
         </div>
     );
 };
 
-export default Store;
+export default StoreLayout;

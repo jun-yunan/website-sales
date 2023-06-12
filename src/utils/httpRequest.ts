@@ -3,12 +3,17 @@ import Cookies from 'js-cookie';
 
 interface httpReq {
     path: string;
-    option?: object;
+    option?: {
+        params: {
+            [key: string]: string | string[] | undefined;
+        };
+    };
     data?: object;
 }
 
 const httpRequest = axios.create({
     baseURL: 'http://localhost:8080/api',
+    timeout: 5000,
     headers: { 'Content-Type': 'application/json' },
 });
 
@@ -33,4 +38,4 @@ export const post = async ({ path, data, option }: httpReq) => {
     return response.data;
 };
 
-export default httpRequest;
+// export default httpRequest;

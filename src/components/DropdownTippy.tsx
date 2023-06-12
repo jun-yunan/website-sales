@@ -12,15 +12,7 @@ import NavbarItemAirPods from './NavbarItem/NavbarItemAirPods';
 import NavbarItemComponent from './NavbarItem/NavbarItemComponent';
 import Auth from './Auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faBagShopping,
-    faBookmark,
-    faBox,
-    faUser,
-    faUserPlus,
-} from '@fortawesome/free-solid-svg-icons';
-import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { faBookmark, faBox } from '@fortawesome/free-solid-svg-icons';
 
 interface DropdownTippyProps {
     children: React.ReactNode;

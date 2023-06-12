@@ -13,7 +13,7 @@ interface AuthProps {}
 const Auth: FunctionComponent<AuthProps> = () => {
     const { data: session, status } = useSession();
 
-    console.log(session?.user);
+    // console.log(session?.user);
 
     if (session && session.user) {
         Cookies.set('accessToken', session?.user.accessToken || '');

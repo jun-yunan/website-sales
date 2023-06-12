@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import { FunctionComponent } from 'react';
 
 interface ItemCategoryProps {
@@ -9,10 +10,10 @@ interface ItemCategoryProps {
 
 const ItemCategory: FunctionComponent<ItemCategoryProps> = ({ children, image, title }) => {
     return (
-        <div className="flex flex-col items-center mx-[15px]">
+        <Link href={'#'} className="flex flex-col items-center mx-[15px]">
             <img src={image} alt={title} className="w-[120px] h-[75px] object-cover mb-4" />
             <p className="text-color font-semibold text-base">{children}</p>
-        </div>
+        </Link>
     );
 };
 

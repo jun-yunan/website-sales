@@ -3,31 +3,24 @@
 import { FunctionComponent } from 'react';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import React from 'react';
-import Tippy from '@tippyjs/react/headless';
-import 'tippy.js/dist/tippy.css'; // optional
-import Auth from './Auth';
 import DropdownTippy from './DropdownTippy';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 interface HeaderProps {}
 
 const Header: FunctionComponent<HeaderProps> = () => {
-    const router = useRouter();
-
-    const handleNavigation = () => {
-        router.push('/');
-    };
     return (
         <div className="flex items-center justify-between h-[60px] w-[60%] text-white  phone:bg-cyan-200 bg-[#161617] overflow-hidden">
-            <div className="cursor-pointer" onClick={handleNavigation}>
+            <Link href={'/'} className="cursor-pointer">
                 <ShoppingBagIcon style={{ fontSize: '40px' }} />
-            </div>
-            <Link href={'/store'} className=" phone:hidden text-sm font-medium">
+            </Link>
+            <Link
+                scroll={true}
+                href={{ pathname: '/store', query: { pageNumber: '1', limit: '8' } }}
+                className=" phone:hidden text-sm font-medium"
+            >
                 <DropdownTippy type="store">Cửa hàng</DropdownTippy>
             </Link>
             <Link href={'/mac'} className=" phone:hidden text-sm font-medium">
