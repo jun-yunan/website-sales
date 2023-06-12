@@ -10,7 +10,7 @@ const Store = async ({ searchParams }: PageProductsProps) => {
     const products: ProductType = await getProductData(searchParams);
 
     return (
-        <div className="w-full min-h-[700px] bg-[#f5f5f7] flex flex-col">
+        <div className="w-full min-h-[700px] bg-[#f5f5f7] flex flex-col items-center">
             <div className="w-full bg-white mx-auto py-[150px] flex flex-col items-center">
                 <h2 className="text-5xl font-bold text-color">Cửa Hàng. Cách tốt nhất để</h2>
                 <h2 className="text-5xl font-bold text-color mb-24">mua sản phẩm bạn thích.</h2>
@@ -23,9 +23,9 @@ const Store = async ({ searchParams }: PageProductsProps) => {
                 <Resizable />
             </div>
 
-            <div className="w-full flex flex-col items-center min-h-[500px] pb-[150px] ">
+            <div className="w-[80%] flex flex-col items-center min-h-[500px] pb-[150px] justify-center ">
                 <h2 className="title-sm-dark mx-auto mb-10">Tất cả sản phẩm</h2>
-                <div className="w-[80%] min-h-[500px] flex flex-wrap justify-center mb-[50px]">
+                <div className="w-full min-h-[500px] flex flex-wrap justify-center mb-[50px]">
                     {products.products?.map((product) => (
                         <ProductItem
                             image={product.image}
