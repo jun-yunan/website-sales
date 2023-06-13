@@ -6,6 +6,7 @@ const nextConfig = {
             'lh3.googleusercontent.com',
             'www.apple.com',
             'store.storeimages.cdn-apple.com',
+            'images.pexels.com',
         ],
     },
 };

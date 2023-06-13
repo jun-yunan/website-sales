@@ -8,6 +8,8 @@ import Link from 'next/link';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SearchIcon from '@mui/icons-material/Search';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
+import SkeletonAvatar from '../Skeleton/SkeletonAvatar';
 
 interface HeaderProps {}
 
@@ -60,11 +62,26 @@ const Header: FunctionComponent<HeaderProps> = () => {
             </div>
 
             <div className="flex items-center">
-                {session?.user.fullName && (
-                    <p className="text-white text-xl">{session?.user.fullName}</p>
-                )}
-                <DropdownTippy type="auth" isLogin={!!session?.user.accessToken}>
-                    <AccountCircleIcon />
+                <DropdownTippy type="auth">
+                    {status === 'loading' ? (
+                        <SkeletonAvatar />
+                    ) : (
+                        <>
+                            {session?.user.image ? (
+                                <div className="flex flex-col items-center justify-center w-[40px] h-[40xp] rounded-full overflow-hidden border border-white hover:opacity-75 transition-all duration-500 ease-in-out">
+                                    <Image
+                                        width={40}
+                                        height={40}
+                                        className="object-cover"
+                                        src={session.user.image}
+                                        alt={session?.user.name}
+                                    />
+                                </div>
+                            ) : (
+                                <AccountCircleIcon />
+                            )}
+                        </>
+                    )}
                 </DropdownTippy>
             </div>
         </div>
