@@ -1,15 +1,20 @@
 'use client';
 
+import Cookies from 'js-cookie';
 import { signIn } from 'next-auth/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAppSelector } from '@/redux/store';
-import ButtonLogin from '@/components/ButtonLogin';
-import { FormEvent, FunctionComponent, useState } from 'react';
+import ButtonLogin from '@/components/Button/ButtonLogin';
+import { FormEvent, FunctionComponent, useEffect, useState } from 'react';
 import { AppDispatch } from '@/redux/store';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 interface SignInProps {}
 
 const SignIn: FunctionComponent<SignInProps> = () => {
+    const router = useRouter();
+    const { data: session, status } = useSession();
     const dispatch = useDispatch<AppDispatch>();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -21,8 +26,6 @@ const SignIn: FunctionComponent<SignInProps> = () => {
     const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setPassword(event.target.value);
     };
-
-    // console.log(email, password);
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -44,6 +47,13 @@ const SignIn: FunctionComponent<SignInProps> = () => {
         }
     };
 
+    useEffect(() => {
+        if (session?.user.accessToken) {
+            Cookies.set('accessToken', session?.user.accessToken || '');
+            router.push('/');
+        }
+    }, [router, session?.user.accessToken]);
+
     return (
         <div className="w-full min-h-[500px] bg-slate-400 flex items-center flex-col">
             <form className="flex flex-col mt-4" onSubmit={handleSubmit}>
@@ -62,7 +72,6 @@ const SignIn: FunctionComponent<SignInProps> = () => {
                     className="text-slate-800 mb-4 p-3 rounded-lg text-base shadow-md focus:text-rose-600 outline-none font-semibold"
                 />
                 <button
-                    // onClick={() => signIn('credentials')}
                     type="submit"
                     className="bg-sky-500 p-2 rounded-lg shadow-lg text-xl font-bold mb-4"
                 >

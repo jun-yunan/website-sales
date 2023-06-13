@@ -25,7 +25,7 @@ const CardProduct: FunctionComponent<CardProductProps> = ({
         <div className="w-[400px] h-[500px] bg-white text-color flex-shrink-0 relative rounded-2xl overflow-hidden shadow-sm">
             <div className={colorTextWhite ? 'absolute p-6 text-white' : 'absolute p-6 text-color'}>
                 <h2>{nameProduct}</h2>
-                <div className={colorTextWhite ? 'title-sm-dark-light' : 'title-sm-dark'}>
+                <div className={colorTextWhite ? 'title-sm-light' : 'title-sm-dark'}>
                     {children}
                 </div>
                 <p>{price || title}</p>

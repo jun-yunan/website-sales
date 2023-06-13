@@ -35,7 +35,7 @@ body {
     }
 
     .btn-light {
-        @apply flex items-center justify-center py-3 px-8 rounded-full border-2 border-black text-xl text-[#1d1d1f] font-semibold hover:bg-[#1d1d1f] hover:text-white transition-all duration-500 ease-in-out hover:cursor-pointer;
+        @apply flex items-center bg-white justify-center py-3 px-8 rounded-full border-2 border-black text-xl text-[#1d1d1f] font-semibold hover:bg-[#1d1d1f] hover:text-white transition-all duration-500 ease-in-out hover:cursor-pointer;
     }
     .btn-dark {
         @apply flex items-center justify-center py-3 px-8 rounded-full hover:border-2 hover:border-[#1d1d1f] bg-[#1d1d1f] text-xl text-white font-semibold hover:bg-white hover:text-black transition-all duration-500 ease-in-out hover:cursor-pointer;
@@ -45,7 +45,7 @@ body {
         @apply text-3xl font-semibold text-[#161617];
     }
 
-    .title-sm-dark-light {
+    .title-sm-light {
         @apply text-3xl font-semibold text-white;
     }
 

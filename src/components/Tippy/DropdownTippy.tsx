@@ -2,24 +2,29 @@ import React, { FunctionComponent } from 'react';
 import Tippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css'; // optional
 import Link from 'next/link';
-import NavbarItemStore from './NavbarItem/NavbarItemStore';
-import NavbarItemMac from './NavbarItem/NavbarItemMac';
-import NavbarItemIpad from './NavbarItem/NavbarItemIpad';
-import NavbarItemIphone from './NavbarItem/NavbarItemIphone';
-import NavbarItemWatch from './NavbarItem/NavbarItemWatch';
-import NavbarItemTv from './NavbarItem/NavbarItemTv';
-import NavbarItemAirPods from './NavbarItem/NavbarItemAirPods';
-import NavbarItemComponent from './NavbarItem/NavbarItemComponent';
-import Auth from './Auth';
+import NavbarItemStore from '../NavbarItem/NavbarItemStore';
+import NavbarItemMac from '../NavbarItem/NavbarItemMac';
+import NavbarItemIpad from '../NavbarItem/NavbarItemIpad';
+import NavbarItemIphone from '../NavbarItem/NavbarItemIphone';
+import NavbarItemWatch from '../NavbarItem/NavbarItemWatch';
+import NavbarItemTv from '../NavbarItem/NavbarItemTv';
+import NavbarItemAirPods from '../NavbarItem/NavbarItemAirPods';
+import NavbarItemComponent from '../NavbarItem/NavbarItemComponent';
+import Auth from '../Auth/Auth';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faBox } from '@fortawesome/free-solid-svg-icons';
 
 interface DropdownTippyProps {
     children: React.ReactNode;
     type?: string;
+    isLogin?: boolean;
 }
 
-const DropdownTippy: FunctionComponent<DropdownTippyProps> = ({ children, type }) => {
+const DropdownTippy: FunctionComponent<DropdownTippyProps> = ({
+    children,
+    type,
+    isLogin = false,
+}) => {
     return (
         <Tippy
             // duration={[300, 500]}
@@ -40,19 +45,21 @@ const DropdownTippy: FunctionComponent<DropdownTippyProps> = ({ children, type }
                     {type === 'airpods' && <NavbarItemAirPods />}
                     {type === 'component' && <NavbarItemComponent />}
                     {type === 'auth' && (
-                        <div className="w-[60%] h-full flex flex-col pb-[30px]">
-                            <div className="flex flex-col">
-                                <h2 className="text-2xl font-semibold text-white">
-                                    Túi của bạn trống.
-                                </h2>
-                                <p>
-                                    <Link href={'/signIn'} className="text-sky-500">
-                                        Đăng nhập
-                                    </Link>{' '}
-                                    để xem sản phẩm trong giỏ hàng của bạn.
-                                </p>
-                            </div>
-                            <div className="mt-8">
+                        <div className="w-[60%] h-full flex flex-col items-end pb-[30px]">
+                            {!isLogin && (
+                                <div className="flex flex-col items-end">
+                                    <h2 className="text-2xl font-semibold text-white">
+                                        Túi của bạn trống.
+                                    </h2>
+                                    <p>
+                                        <Link href={'/signIn'} className="text-sky-500">
+                                            Đăng nhập
+                                        </Link>{' '}
+                                        để xem sản phẩm trong giỏ hàng của bạn.
+                                    </p>
+                                </div>
+                            )}
+                            <div className="mt-8 flex flex-col items-end">
                                 <p className="mb-4">Hồ sơ của tôi</p>
                                 <Link href={'/cart'} className="flex my-2 items-center">
                                     <FontAwesomeIcon className="mr-2" icon={faBox} />

@@ -1,6 +1,6 @@
 'use client';
 
-import ButtonLogin from '@/components/ButtonLogin';
+import ButtonLogin from '@/components/Button/ButtonLogin';
 import { FunctionComponent } from 'react';
 import Form from '@/components/Form/Form';
 

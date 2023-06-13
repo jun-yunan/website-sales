@@ -1,8 +1,9 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
-import { NextAuthProvider } from '../components/providers';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+// import { NextAuthProvider } from '../components/Provider/providers';
+import { NextAuthProvider } from '@/components/Provider/providers';
+import Header from '@/components/Layouts/Header';
+import Footer from '@/components/Layouts/Footer';
 import { ReduxProvider } from '@/redux/features/provider';
 
 const inter = Inter({ subsets: ['latin'] });

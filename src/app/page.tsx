@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import ImagePreview from '@/components/ImagePreview';
-import PreviewProduct from '@/components/PreviewProduct';
+import ImagePreview from '@/components/Image/ImagePreview';
+import PreviewProduct from '@/components/Product/PreviewProduct';
 
 export default function Home() {
     return (

@@ -1,8 +1,8 @@
 // import Loading from '@/components/LoadingSkeleton';
 
-import Loading from '@/components/Loading';
-import LoadingSkeleton from '@/components/LoadingSkeleton';
-import SkeletonProduct from '@/components/Product/SkeletonProduct';
+import Loading from '@/components/Loading/Loading';
+import LoadingSkeleton from '@/components/Skeleton/LoadingSkeleton';
+import SkeletonProduct from '@/components/Skeleton/SkeletonProduct';
 import { FunctionComponent } from 'react';
 
 interface CartProps {}

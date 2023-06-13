@@ -3,14 +3,17 @@
 import { FunctionComponent } from 'react';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import React from 'react';
-import DropdownTippy from './DropdownTippy';
-import SearchIcon from '@mui/icons-material/Search';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import DropdownTippy from '../Tippy/DropdownTippy';
 import Link from 'next/link';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SearchIcon from '@mui/icons-material/Search';
+import { useSession } from 'next-auth/react';
 
 interface HeaderProps {}
 
 const Header: FunctionComponent<HeaderProps> = () => {
+    const { data: session, status } = useSession();
+
     return (
         <div className="flex items-center justify-between h-[60px] w-[60%] text-white  phone:bg-cyan-200 bg-[#161617] overflow-hidden">
             <Link href={'/'} className="cursor-pointer">
@@ -51,11 +54,16 @@ const Header: FunctionComponent<HeaderProps> = () => {
                     className="text-black py-2 w-[80%]  focus:w-full outline-none px-2 text-sm rounded-xl"
                     placeholder="Search..."
                 />
-                <SearchIcon style={{ color: '#000' }} />
+                <Link href={'#'}>
+                    <SearchIcon />
+                </Link>
             </div>
 
             <div className="flex items-center">
-                <DropdownTippy type="auth">
+                {session?.user.fullName && (
+                    <p className="text-white text-xl">{session?.user.fullName}</p>
+                )}
+                <DropdownTippy type="auth" isLogin={!!session?.user.accessToken}>
                     <AccountCircleIcon />
                 </DropdownTippy>
             </div>
