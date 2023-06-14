@@ -48,11 +48,11 @@ const SignIn: FunctionComponent<SignInProps> = () => {
     };
 
     useEffect(() => {
-        if (session?.user.accessToken) {
+        if (session?.user) {
             Cookies.set('accessToken', session?.user.accessToken || '');
             router.push('/');
         }
-    }, [router, session?.user.accessToken]);
+    }, [router, session?.user]);
 
     return (
         <div className="w-full min-h-[500px] bg-slate-400 flex items-center flex-col">
@@ -78,6 +78,12 @@ const SignIn: FunctionComponent<SignInProps> = () => {
                     Login In
                 </button>
             </form>
+            <button
+                className="bg-sky-500 p-2 rounded-lg shadow-lg text-xl font-bold mb-4"
+                onClick={() => signIn('email')}
+            >
+                Login In
+            </button>
             <ButtonLogin />
         </div>
     );

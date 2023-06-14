@@ -3,8 +3,8 @@ import PageNumber from '@/components/Product/PageNumber';
 import ProductItem from '@/components/Product/ProductItem';
 import Resizable from '@/components/Product/Resizable';
 
-import { getProductData } from '@/utils/getProducts/product';
 import { PageProductsProps, ProductType } from '@/types/product';
+import { getProductData } from '@/utils/product';
 
 const Store = async ({ searchParams }: PageProductsProps) => {
     const products: ProductType = await getProductData(searchParams);
@@ -37,6 +37,7 @@ const Store = async ({ searchParams }: PageProductsProps) => {
                 </div>
                 <PageNumber searchParams={searchParams} />
             </div>
+            <p className="title-sm-dark">{process.env.URL_API_LOCAL}</p>
         </div>
     );
 };

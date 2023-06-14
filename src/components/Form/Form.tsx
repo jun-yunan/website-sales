@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { userService } from '@/services';
+import { ResultSignUp } from '@/types/users';
 
 const schema = yup
     .object({
@@ -64,30 +65,27 @@ function Form() {
         resolver: yupResolver(schema),
     });
 
-    const submitForm: SubmitHandler<Inputs> = (data) => {
+    const submitForm: SubmitHandler<Inputs> = async (data) => {
         const { confirmPassword, ...InfoUser } = data;
         setFormData(InfoUser);
-        // try {
-        //     const response = await fetch('http://localhost:3000/api/signup', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //         },
-        //         body: JSON.stringify(InfoUser),
-        //     });
-        //     const result = await response.json();
-        //     setSignUp(result);
-        //     if (!result.error) router.push('/signIn');
-        // } catch (error) {
-        //     console.error(error);
-        // }
 
-        const fetchApi = async () => {
-            const response = await userService.signUp(InfoUser);
-            console.log(response);
-            return response;
-        };
-        fetchApi();
+        try {
+            const response = await fetch('http://localhost:3001/api/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(InfoUser),
+            });
+
+            const result: ResultSignUp = await response.json();
+            // console.log(result.email);
+
+            if (result.error) {
+                return alert(result.error);
+            }
+            router.push('/signIn');
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     return (

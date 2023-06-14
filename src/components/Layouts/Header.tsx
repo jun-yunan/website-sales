@@ -68,7 +68,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
                     ) : (
                         <>
                             {session?.user.image ? (
-                                <div className="flex flex-col items-center justify-center w-[40px] h-[40xp] rounded-full overflow-hidden border border-white hover:opacity-75 transition-all duration-500 ease-in-out">
+                                <div className="flex flex-col items-center justify-center w-[40px] h-[40xp] rounded-full overflow-hidden border-2 border-white hover:opacity-75 transition-all duration-500 ease-in-out">
                                     <Image
                                         width={40}
                                         height={40}

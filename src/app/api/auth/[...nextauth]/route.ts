@@ -1,12 +1,16 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-// import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
-// import { IUser } from '@/types';
-// import clientPromise from '@/lib/mongodb';
+import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
+import EmailProvider from 'next-auth/providers/email';
+import clientPromise from '@/lib/mongodb';
 
 const handler = NextAuth({
     providers: [
+        EmailProvider({
+            server: process.env.EMAIL_SERVER,
+            from: process.env.EMAIL_FROM,
+        }),
         GoogleProvider({
             clientId: `${process.env.GOOGLE_ID}`,
             clientSecret: `${process.env.GOOGLE_SECRET}`,
@@ -19,7 +23,7 @@ const handler = NextAuth({
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials, req) {
-                const res = await fetch('http://localhost:8080/api/signIn', {
+                const res = await fetch('http://localhost:3001/api/signIn', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -42,9 +46,9 @@ const handler = NextAuth({
             },
         }),
     ],
-    // adapter: MongoDBAdapter(clientPromise),
+    adapter: MongoDBAdapter(clientPromise),
     pages: {
-        signIn: '/signIn',
+        // signIn: '/signIn',
     },
     session: {
         strategy: 'jwt',

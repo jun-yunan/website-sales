@@ -1,12 +1,22 @@
 'use client';
 
-import { faBookmark, faBox, faUser, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import {
+    faBookmark,
+    faBox,
+    faGear,
+    faGlobe,
+    faQuestion,
+    faUser,
+    faUserPlus,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Link from 'next/link';
 import { FunctionComponent } from 'react';
 import { signOut, useSession } from 'next-auth/react';
 import Cookies from 'js-cookie';
 import Image from 'next/image';
+import SettingsIcon from '@mui/icons-material/Settings';
+import LanguageIcon from '@mui/icons-material/Language';
 
 interface NavbarItemAuthProps {}
 
@@ -36,20 +46,34 @@ const NavbarItemAuth: FunctionComponent<NavbarItemAuthProps> = () => {
                     </div>
                     <Link
                         href="/profile"
-                        className="w-[90%] self-center items-center justify-center flex bg-white rounded-2xl text-lg font-semibold text-[#161617] border-2 border-[#161617] hover:bg-[#161617] hover:text-[white] transition-all duration-500 ease-in-out"
+                        className="w-[90%] self-center items-center justify-center flex bg-white rounded-2xl text-base font-semibold text-[#161617] border-2 border-[#161617] hover:bg-[#161617] hover:text-[white] transition-all duration-500 ease-in-out"
                     >
                         <p>Xem hồ sơ của tôi</p>
                     </Link>
                 </div>
                 <div className="mb-2 border-b border-slate-200"></div>
                 <div className="w-[90%] self-center">
-                    <Link href={'/cart'} className="flex my-2 items-center">
+                    <h2 className="text-xl text-color font-semibold">Account</h2>
+
+                    <Link href={'/cart'} className="flex py-2 items-center hover:underline ">
                         <FontAwesomeIcon className="mr-2" icon={faBox} />
                         <p>Đơn hàng</p>
                     </Link>
-                    <Link href={'#'} className="flex my-2 items-center">
+                    <Link href={'#'} className="flex py-2 items-center hover:underline">
                         <FontAwesomeIcon className="mr-2" icon={faBookmark} />
                         <p>Mục đã lưu</p>
+                    </Link>
+                    <Link href={'#'} className="flex py-2 items-center hover:underline">
+                        <FontAwesomeIcon className="mr-2" icon={faGear} />
+                        <p>Setting & Privacy</p>
+                    </Link>
+                    <Link href={'#'} className="flex py-2 items-center hover:underline">
+                        <FontAwesomeIcon className="mr-2" icon={faQuestion} />
+                        <p>Help</p>
+                    </Link>
+                    <Link href={'#'} className="flex py-2 items-center hover:underline">
+                        <FontAwesomeIcon className="mr-2" icon={faGlobe} />
+                        <p>Language</p>
                     </Link>
                 </div>
 
@@ -68,10 +92,10 @@ const NavbarItemAuth: FunctionComponent<NavbarItemAuthProps> = () => {
         );
     }
     return (
-        <div className="w-[60%] h-full flex pb-[30px]">
+        <div className="w-[60%] h-full flex pb-[30px] text-color">
             <div className="w-full h-full mt-8 flex flex-col items-end">
-                <div className="flex flex-col items-end">
-                    <h2 className="text-2xl font-semibold text-white">Túi của bạn trống.</h2>
+                <div className="flex flex-col items-center justify-center">
+                    <h2 className="text-2xl font-semibold">Túi của bạn trống.</h2>
                     <p>
                         <Link href={'/signIn'} className="text-sky-500">
                             Đăng nhập
@@ -79,7 +103,7 @@ const NavbarItemAuth: FunctionComponent<NavbarItemAuthProps> = () => {
                         để xem sản phẩm trong giỏ hàng của bạn.
                     </p>
                 </div>
-                <div className="flex flex-col items-end mt-12">
+                <div className="flex flex-col items-center font-semibold mt-12">
                     <Link href={'/signIn'} className="flex my-1 items-center">
                         <FontAwesomeIcon className="mr-2" icon={faUser} />
                         <p>Đăng nhập</p>

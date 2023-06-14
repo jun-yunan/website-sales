@@ -1,7 +1,7 @@
 import ProductItem from '@/components/Product/ProductItem';
 import { PageProductsProps, ProductType } from '@/types/product';
 import PageNumber from '@/components/Product/PageNumber';
-import { getProductData } from '@/utils/getProducts/product';
+import { getProductData } from '@/utils/product';
 
 const PageProducts = async ({ searchParams }: PageProductsProps) => {
     const products: ProductType = await getProductData(searchParams);

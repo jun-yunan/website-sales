@@ -1,7 +1,7 @@
 'use client';
 
 import { FunctionComponent, useState, CSSProperties } from 'react';
-import { ClipLoader, MoonLoader } from 'react-spinners';
+import { BarLoader, ClipLoader, MoonLoader } from 'react-spinners';
 
 interface LoadingProps {}
 
@@ -14,7 +14,7 @@ const Loading: FunctionComponent<LoadingProps> = () => {
     // </div>
     return (
         <div className="flex justify-center flex-col items-center  w-full h-full">
-            <MoonLoader color="#6c757d" loading size={120} speedMultiplier={0.5} />
+            <BarLoader color="#6c757d" speedMultiplier={0.8} width={250} />
             <h2 className="title-sm-dark mt-6 animate-pulse">Loading...</h2>
         </div>
     );

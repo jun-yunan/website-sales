@@ -26,7 +26,7 @@ const DropdownTippy: FunctionComponent<DropdownTippyProps> = ({ children, type }
                 <div
                     className={
                         type === 'auth'
-                            ? 'bg-white min-h-[100px] min-w-[330px] flex justify-center rounded-xl shadow-xl'
+                            ? 'bg-white min-h-[100px] min-w-[280px] flex justify-center rounded-xl shadow-xl'
                             : 'bg-[#161617] min-h-[300px] w-screen translate-x-[-6px] flex justify-center translate-y-[-9px]'
                     }
                     tabIndex={-1}

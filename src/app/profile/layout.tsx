@@ -1,3 +1,4 @@
+import CoverImage from '@/components/Profile/CoverImage';
 import { FunctionComponent } from 'react';
 
 interface LayoutProfileProps {

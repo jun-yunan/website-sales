@@ -12,7 +12,7 @@ interface httpReq {
 }
 
 const httpRequest = axios.create({
-    baseURL: 'http://localhost:8080/api',
+    baseURL: `${process.env.URL_API_LOCAL}`,
     timeout: 5000,
     headers: { 'Content-Type': 'application/json' },
 });
@@ -37,5 +37,3 @@ export const post = async ({ path, data, option }: httpReq) => {
     const response = await httpRequest.post(path, data);
     return response.data;
 };
-
-// export default httpRequest;
