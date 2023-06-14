@@ -1,5 +1,5 @@
 import { signJwtAccessToken } from '@/lib/jwt';
-import { connectToMongoDB } from '@/lib/mongodb';
+// import { connectToMongoDB } from '@/lib/mongodb';
 import User from '@/models/user';
 import { compare } from 'bcrypt';
 import { NextResponse } from 'next/server';
@@ -12,7 +12,7 @@ interface RequestBody {
 
 export async function POST(request: Request) {
     try {
-        await connectToMongoDB();
+        // await connectToMongoDB();
 
         const body: RequestBody = await request.json();
         const user = await User.findOne({ email: body.email });
