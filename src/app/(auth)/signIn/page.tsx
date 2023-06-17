@@ -2,20 +2,21 @@
 
 import Cookies from 'js-cookie';
 import { signIn } from 'next-auth/react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useAppSelector } from '@/redux/store';
+import { useDispatch } from 'react-redux';
 import ButtonLogin from '@/components/Button/ButtonLogin';
 import { FormEvent, FunctionComponent, useEffect, useState } from 'react';
 import { AppDispatch } from '@/redux/store';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
+import { useAppDispatch } from '@/redux/hooks';
+import { authSlice, fetchGetUserById } from '@/redux/features/authSlice';
 
 interface SignInProps {}
 
 const SignIn: FunctionComponent<SignInProps> = () => {
     const router = useRouter();
     const { data: session, status } = useSession();
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -50,12 +51,15 @@ const SignIn: FunctionComponent<SignInProps> = () => {
     useEffect(() => {
         if (session?.user) {
             Cookies.set('accessToken', session?.user.accessToken || '');
+            dispatch(authSlice.actions.setToken(session.user.accessToken));
+            // session && dispatch(fetchGetUserById(session?.user?._id));
             router.push('/');
         }
-    }, [router, session?.user]);
+    }, [dispatch, router, session]);
 
     return (
         <div className="w-full min-h-[500px] bg-slate-400 flex items-center flex-col">
+            {/* <button>Get User By Id</button> */}
             <form className="flex flex-col mt-4" onSubmit={handleSubmit}>
                 <input
                     type="email"

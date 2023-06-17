@@ -4,7 +4,8 @@ import { Inter } from 'next/font/google';
 import { NextAuthProvider } from '@/components/Provider/providers';
 import Header from '@/components/Layouts/Header';
 import Footer from '@/components/Layouts/Footer';
-import { ReduxProvider } from '@/redux/features/provider';
+// import { ReduxProvider } from '@/redux/features/provider';
+import { ReduxProvider } from '@/redux/provider';
 
 const inter = Inter({ subsets: ['latin'] });
 

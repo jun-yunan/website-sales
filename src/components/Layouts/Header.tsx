@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { FunctionComponent } from 'react';
@@ -10,11 +11,17 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import SkeletonAvatar from '../Skeleton/SkeletonAvatar';
+import { useGetUserByIdQuery } from '@/redux/services/userApi';
 
 interface HeaderProps {}
 
 const Header: FunctionComponent<HeaderProps> = () => {
     const { data: session, status } = useSession();
+
+    const { data, isError, isFetching, isLoading } = useGetUserByIdQuery(
+        { _id: session?.user._id as string },
+        { skip: !session?.user._id }
+    );
 
     return (
         <div className="flex items-center justify-between h-[60px] w-[60%] text-white  phone:bg-cyan-200 bg-[#161617] overflow-hidden">
@@ -67,14 +74,17 @@ const Header: FunctionComponent<HeaderProps> = () => {
                         <SkeletonAvatar />
                     ) : (
                         <>
-                            {session?.user.image ? (
-                                <div className="flex flex-col items-center justify-center w-[40px] h-[40xp] rounded-full overflow-hidden border-2 border-white hover:opacity-75 transition-all duration-500 ease-in-out">
+                            {data?.user?.avatar || session?.user.image ? (
+                                <div className="flex flex-col items-center justify-center w-[35px] h-[35xp] rounded-full overflow-hidden border-2 border-white hover:opacity-75 transition-all duration-500 ease-in-out">
                                     <Image
-                                        width={40}
-                                        height={40}
-                                        className="object-cover"
-                                        src={session.user.image}
-                                        alt={session?.user.name}
+                                        width={35}
+                                        height={35}
+                                        className="object-cover max-h-[35px]"
+                                        src={
+                                            (data?.user?.avatar as string) ||
+                                            (session?.user?.image as string)
+                                        }
+                                        alt={data?.user?.name as string}
                                     />
                                 </div>
                             ) : (

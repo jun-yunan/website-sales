@@ -18,7 +18,34 @@ export const getAllUser = async () => {
 
 export const signUp = async (data: FormDataState) => {
     try {
-        const response = await httpRequest.post({ path: '/signup', data: { data } });
+        const response = await httpRequest.post({ path: '/signup', data });
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const uploadPhoto = async (data: any) => {
+    try {
+        const response = await httpRequest.post({ path: '/users/profile/avatar', data });
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const updateInfoProfile = async (formData: any) => {
+    try {
+        const response = await httpRequest.put({ path: '/users/profile', data: formData });
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+export const getUserById = async (userId: string) => {
+    try {
+        const response = await httpRequest.get({ path: `/users/${userId}` });
         return response;
     } catch (error) {
         console.error(error);

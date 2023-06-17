@@ -7,6 +7,7 @@ const nextConfig = {
             'www.apple.com',
             'store.storeimages.cdn-apple.com',
             'images.pexels.com',
+            'res.cloudinary.com',
         ],
     },
 };

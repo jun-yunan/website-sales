@@ -37,7 +37,7 @@ const Store = async ({ searchParams }: PageProductsProps) => {
                 </div>
                 <PageNumber searchParams={searchParams} />
             </div>
-            <p className="title-sm-dark">{process.env.URL_API_LOCAL}</p>
+            {/* <p className="title-sm-dark">{process.env.URL_API_LOCAL}</p> */}
         </div>
     );
 };

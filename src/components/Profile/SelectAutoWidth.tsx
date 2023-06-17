@@ -4,11 +4,11 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-export default function SelectAutoWidth() {
-    const [age, setAge] = React.useState('');
+export default function SelectAutoWidth({ value, register }: { value?: string; register: any }) {
+    const [gender, setGender] = React.useState('');
 
     const handleChange = (event: SelectChangeEvent) => {
-        setAge(event.target.value);
+        setGender(event.target.value);
     };
 
     return (
@@ -18,9 +18,12 @@ export default function SelectAutoWidth() {
                     Gender
                 </InputLabel>
                 <Select
+                    {...register('gender')}
                     labelId="demo-simple-select-standard-label"
+                    name="gender"
                     id="demo-simple-select-standard"
-                    value={age}
+                    defaultValue={value}
+                    value={gender}
                     onChange={handleChange}
                     label="Gender"
                 >
