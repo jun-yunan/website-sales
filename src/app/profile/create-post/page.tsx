@@ -12,6 +12,7 @@ import Tippy from '@tippyjs/react';
 import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
 import InfoAuthor from '@/components/Profile/CreatePost/InfoAuthor';
 import FormCreatePost from '@/components/Profile/CreatePost/FormCreatePost';
+import { ToastContainer } from 'react-toastify';
 
 interface CreatePostProps {}
 
@@ -43,6 +44,7 @@ const CreatePost: FunctionComponent<CreatePostProps> = () => {
 
     return (
         <div className="fixed w-full z-20 h-full translate-y-[-32px] flex flex-col items-center justify-center bg-[#444] bg-opacity-60">
+            <ToastContainer />
             <div className="relative flex flex-col w-[40%] phone:min-w-[80%] phone:max-h-[65%] max-h-[80%] translate-y-[-5%] bg-white phone:translate-y-[-25%] rounded-xl shadow-xl px-6">
                 <Link
                     href={'/profile'}

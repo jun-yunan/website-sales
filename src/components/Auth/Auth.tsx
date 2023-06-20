@@ -19,7 +19,7 @@ const Auth: FunctionComponent<AuthProps> = () => {
         return (
             <div className="flex items-end flex-col ">
                 <div className="flex items-center">
-                    <p>{session.user?.fullName || session.user.name}</p>
+                    <p>{session.user?.name || session.user.name}</p>
                 </div>
 
                 <button

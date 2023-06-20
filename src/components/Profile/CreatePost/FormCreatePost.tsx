@@ -5,8 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
 import EmojiPicker, { EmojiClickData } from 'emoji-picker-react';
 import { useSession } from 'next-auth/react';
-import { ChangeEvent, FormEvent, FunctionComponent, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { ChangeEvent, FormEvent, FunctionComponent, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 interface FormCreatePostProps {}
 
@@ -21,6 +23,8 @@ const FormCreatePost: FunctionComponent<FormCreatePostProps> = () => {
     const [selectedEmoji, setSelectedEmoji] = useState('');
     const [imagePost, setImagePost] = useState('');
     const [fileImage, setFileImage] = useState<File | null>(null);
+
+    const router = useRouter();
 
     const { register, handleSubmit } = useForm<FormCreatePost>();
 
@@ -53,6 +57,17 @@ const FormCreatePost: FunctionComponent<FormCreatePostProps> = () => {
             });
         }
     };
+
+    useEffect(() => {
+        if (resultCreatePost.isSuccess && resultCreatePost.data.status) {
+            // toast.success(resultCreatePost.data.message);
+            router.push('/profile');
+        }
+
+        if (resultCreatePost.isLoading) {
+            toast.loading('Loading...');
+        }
+    }, [resultCreatePost, router]);
 
     return (
         <>
