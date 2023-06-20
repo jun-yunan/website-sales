@@ -32,6 +32,13 @@ export interface ResponseServer {
     message?: string;
     request?: any;
     user?: InfoUser;
+    posts?: any;
 }
+
+export interface ErrorToServer {
+    error: string;
+}
+
+export type CreatePost = ResponseServer;
 
 export type UploadImage = ResponseServer;

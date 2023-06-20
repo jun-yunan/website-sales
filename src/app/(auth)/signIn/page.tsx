@@ -53,7 +53,8 @@ const SignIn: FunctionComponent<SignInProps> = () => {
             Cookies.set('accessToken', session?.user.accessToken || '');
             dispatch(authSlice.actions.setToken(session.user.accessToken));
             // session && dispatch(fetchGetUserById(session?.user?._id));
-            router.push('/');
+            // router.push('/');
+            router.back();
         }
     }, [dispatch, router, session]);
 

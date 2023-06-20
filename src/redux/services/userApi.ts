@@ -61,7 +61,8 @@ export const userApi = createApi({
                     body: data.data,
                 };
             },
-            invalidatesTags: (result, error, data) => [{ type: 'Posts', id: data._id }],
+            invalidatesTags: (result, error, data) =>
+                error ? [] : [{ type: 'Posts', id: data._id }],
         }),
 
         updateAvatar: builder.mutation<UploadImage, { _id: string; data: any }>({
@@ -72,7 +73,8 @@ export const userApi = createApi({
                     body: data,
                 };
             },
-            invalidatesTags: (result, error, data) => [{ type: 'Posts', id: data._id }],
+            invalidatesTags: (result, error, data) =>
+                error ? [] : [{ type: 'Posts', id: data._id }],
         }),
     }),
 });

@@ -11,23 +11,25 @@ const CreatePost: FunctionComponent<CreatePostProps> = () => {
     const { data: session, status } = useSession();
 
     return (
-        <div className="min-w-[50%] h-full flex flex-col items-center mt-4">
-            <div className="flex flex-col text-color">
-                <div className="mb-10">
-                    <p className="text-2xl font-semibold">Activity</p>
-                    <p className="text-xl font-semibold text-[#0a66c2] hover:underline cursor-pointer">
+        <div className="min-w-[50%] h-full flex flex-col items-center mt-4  phone:mt-0 phone:translate-y-[-20%]">
+            <div className="flex h-[50%] flex-col text-color justify-between">
+                <div className="">
+                    <p className="text-2xl phone:text-base font-semibold">Activity</p>
+                    <p className="text-xl phone:text-base font-semibold text-[#0a66c2] hover:underline cursor-pointer">
                         0 followers
                     </p>
                 </div>
                 <div>
-                    <p className='className="text-2xl font-semibold'>You haven’t posted yet</p>
-                    <p>Posts you share will be displayed here.</p>
+                    <p className='className="text-2xl phone:text-base font-semibold'>
+                        You haven’t posted yet
+                    </p>
+                    <p className="phone:text-sm">Posts you share will be displayed here.</p>
                 </div>
                 <Link
-                    href={'#'}
-                    className="mt-10 py-1  items-center px-4 justify-center flex bg-white rounded-2xl text-base font-semibold text-[#161617] border-2 border-[#161617] hover:bg-[#161617] hover:text-[white] transition-all duration-500 ease-in-out"
+                    href={'/profile/create-post'}
+                    className="py-1  items-center px-4 justify-center flex bg-white rounded-2xl text-base font-semibold text-[#161617] border-2 border-[#161617] hover:bg-[#161617] hover:text-[white] transition-all duration-500 ease-in-out"
                 >
-                    <p className="text-2xl mr-2">Create a post</p>
+                    <p className="text-2xl phone:text-base mr-2">Create a post</p>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"

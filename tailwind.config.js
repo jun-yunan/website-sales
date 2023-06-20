@@ -12,6 +12,16 @@ module.exports = {
             //     'gradient-conic':
             //         'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             // },
+            keyframes: {
+                wiggle: {
+                    '0%': { transform: 'translateY(-200%)' },
+                    '35%': { transform: 'translateY(0)' },
+                    '100%': { transform: 'translateY(0)' },
+                },
+            },
+            animation: {
+                wiggle: 'wiggle 4s ease-in-out infinite',
+            },
         },
         screens: {
             phone: { min: '100px', max: '639px' },

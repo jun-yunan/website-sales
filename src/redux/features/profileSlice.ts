@@ -2,10 +2,13 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { userService } from '@/services';
 import { FormInfoProfile } from '@/components/Profile/EditProfile/FormEditInfo';
 import { ResultFetchUpdateInfoProfile } from '@/types/profile';
+import { boolean } from 'yup';
 
 type InitialState = {
     resUploadPhoto: ResUploadPhoto;
     updateInfoProfile: UpdateInfoProfile;
+    showModel: boolean;
+    postId: string;
 };
 
 interface ResUploadPhoto {
@@ -36,6 +39,9 @@ const initialState = {
         status: false,
         data: null,
     } as UpdateInfoProfile,
+
+    showModel: false,
+    postId: '',
 } as InitialState;
 
 export const fetchUploadPhoto = createAsyncThunk('profile/fetchUploadPhoto', async (data: any) => {
@@ -54,7 +60,17 @@ export const fetchUpdateInfoProfile = createAsyncThunk(
 export const profileSlice = createSlice({
     name: 'profile',
     initialState,
-    reducers: {},
+    reducers: {
+        handleShowModel: (state) => {
+            state.showModel = true;
+        },
+        handleHideModel: (state) => {
+            state.showModel = false;
+        },
+        setPostId: (state, action: PayloadAction<string>) => {
+            state.postId = action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchUploadPhoto.pending, (state, action: PayloadAction<any>) => {

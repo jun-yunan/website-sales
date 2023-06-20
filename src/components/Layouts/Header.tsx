@@ -12,6 +12,7 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import SkeletonAvatar from '../Skeleton/SkeletonAvatar';
 import { useGetUserByIdQuery } from '@/redux/services/userApi';
+import DropdownNavbar from '../Tippy/DropdownNavbar';
 
 interface HeaderProps {}
 
@@ -24,7 +25,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
     );
 
     return (
-        <div className="flex items-center justify-between h-[60px] w-[60%] text-white  phone:bg-cyan-200 bg-[#161617] overflow-hidden">
+        <div className="flex items-center justify-between h-[60px] w-[60%] text-white phone:w-[100%] bg-[#161617] overflow-hidden">
             <Link href={'/'} className="cursor-pointer">
                 <ShoppingBagIcon style={{ fontSize: '40px' }} />
             </Link>
@@ -67,7 +68,9 @@ const Header: FunctionComponent<HeaderProps> = () => {
                     <SearchIcon />
                 </Link>
             </div>
-
+            <div className="hidden phone:block">
+                <DropdownNavbar></DropdownNavbar>
+            </div>
             <div className="flex items-center">
                 <DropdownTippy type="auth">
                     {status === 'loading' ? (

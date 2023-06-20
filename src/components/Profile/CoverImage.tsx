@@ -7,7 +7,7 @@ interface CoverImageProps {}
 
 const CoverImage: FunctionComponent<CoverImageProps> = () => {
     return (
-        <div className="w-full h-[200px] flex items-center justify-center relative">
+        <div className="w-full h-[200px] phone:h-[130px] flex items-center justify-center relative">
             <img
                 src={
                     'https://images.pexels.com/photos/1111318/pexels-photo-1111318.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
