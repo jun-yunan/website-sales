@@ -5,7 +5,7 @@ interface LoadingProfileProps {}
 
 const LoadingProfile: FunctionComponent<LoadingProfileProps> = () => {
     return (
-        <div className="w-full min-h-[500px] flex flex-col items-center justify-center bg-white">
+        <div className="w-full min-h-full flex flex-col items-center justify-center bg-white">
             <Loading />
         </div>
     );

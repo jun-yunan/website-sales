@@ -1,13 +1,10 @@
-'use client';
-
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { NextAuthProvider } from '@/components/Provider/providers';
 import Header from '@/components/Layouts/Header';
 import Footer from '@/components/Layouts/Footer';
 import { ReduxProvider } from '@/redux/provider';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from '../utils/toastProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
