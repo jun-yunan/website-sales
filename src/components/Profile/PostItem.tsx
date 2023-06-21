@@ -75,12 +75,18 @@ const PostItem: FunctionComponent<PostItemProps> = ({ image, content, author, po
             </Tippy>
             <div className="flex items-center ">
                 <div className="flex items-center mr-3 justify-center rounded-[50%] overflow-hidden phone:w-[50px] phone:h-[50px] w-[80px] h-[80px]">
-                    <Image
+                    {/* <Image
                         src={author.avatar}
                         alt=""
                         width={80}
                         height={80}
                         className="object-cover phone:w-[50px] phone:h-[50px]"
+                    /> */}
+
+                    <img
+                        src={author.avatar}
+                        alt={author.name}
+                        className="object-cover w-full h-full"
                     />
                 </div>
 

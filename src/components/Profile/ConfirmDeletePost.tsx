@@ -6,7 +6,7 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSession } from 'next-auth/react';
 import { FunctionComponent, useEffect } from 'react';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 interface ConfirmDeletePostProps {}
 
@@ -48,31 +48,30 @@ const ConfirmDeletePost: FunctionComponent<ConfirmDeletePostProps> = () => {
     }, [dispatch, resultDeletePost]);
 
     return (
-        <div className="w-full h-full bg-slate-300 bg-opacity-40 z-30 text-color text-3xl  fixed flex items-center justify-center">
-            <ToastContainer />
+        <div className="w-full phone:w-[150%] phone:h-[70%] h-full bg-slate-300 bg-opacity-40 z-30 text-color text-3xl  fixed flex items-center justify-center">
             <div className="bg-white mb-[250px] w-[50%] min-h-[30%] flex flex-col items-center rounded-xl shadow-xl p-6">
                 <div className="relative flex items-center w-full">
-                    <p className="self-center mx-auto font-semibold">Xoá bài viết</p>
+                    <p className="self-center mx-auto font-semibold phone:text-xl">Xoá bài viết</p>
                     <FontAwesomeIcon
                         onClick={handleClose}
                         icon={faXmark}
-                        className="absolute right-0 px-3 py-2 cursor-pointer transition-all duration-300 ease-in-out rounded-[50%] hover:bg-slate-300"
+                        className="absolute phone:text-xl right-0 px-3 py-2 cursor-pointer transition-all duration-300 ease-in-out rounded-[50%] hover:bg-slate-300"
                     />
                 </div>
-                <div className="border-2 border-y-slate-200 my-4 w-full"></div>
-                <p className="text-2xl">
+                <div className="border-2 border-y-slate-200 my-4 phone:my-2 w-full"></div>
+                <p className="text-2xl phone:text-base">
                     Xóa bài viết sẽ không thể khôi phục. Bạn có chắc chắn muốn xoá bài viết này?
                 </p>
                 <div className="flex items-center self-end mt-5">
                     <button
                         onClick={handleClose}
-                        className="mr-4 py-2 px-6 font-semibold transition-all duration-300 ease-in-out  hover:bg-[#161617] hover:text-white text-lg border-2 border-[#161617] rounded-xl shadow-xl"
+                        className="mr-4 py-2 phone:text-xl phone:px-3 phone:py-1 px-6 font-semibold transition-all duration-300 ease-in-out  hover:bg-[#161617] hover:text-white text-lg border-2 border-[#161617] rounded-xl shadow-xl"
                     >
                         Cancel
                     </button>
                     <button
                         onClick={handleDelete}
-                        className="py-2 px-6 font-semibold transition-all duration-300 ease-in-out hover:bg-red-700 hover:text-white text-lg border-2 border-red-700 text-red-700 rounded-xl shadow-xl"
+                        className="py-2 px-6 phone:text-xl phone:px-3 phone:py-1 font-semibold transition-all duration-300 ease-in-out hover:bg-red-700 hover:text-white text-lg border-2 border-red-700 text-red-700 rounded-xl shadow-xl"
                     >
                         Delete
                     </button>

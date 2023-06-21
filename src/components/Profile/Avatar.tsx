@@ -6,17 +6,13 @@ import { useSession } from 'next-auth/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useAppSelector, useAppDispatch } from '@/redux/hooks';
-import { fetchUploadPhoto } from '@/redux/features/profileSlice';
 import { useGetUserByIdQuery, useUpdateAvatarMutation } from '@/redux/services/userApi';
 import SkeletonAvatar from '../Skeleton/SkeletonAvatar';
 import SkeletonAvatarProfile from '../Skeleton/SkeletonPofile/SkeletonAvatarProfile';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SkeletonLoadingUpdateAvatar from '../Skeleton/SkeletonLoadingUpdateAvatar';
-import { ErrorToServer } from '@/types/users';
-import { SerializedError } from '@reduxjs/toolkit';
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
-import { isEntityError, isFetchBaseQueryError } from '@/utils/helpers';
+import { isEntityError } from '@/utils/helpers';
 
 interface AvatarProps {}
 
@@ -101,7 +97,6 @@ const Avatar: FunctionComponent<AvatarProps> = () => {
     if (show) {
         return (
             <div className="w-full h-full fixed bg-slate-600 top-0 right-0 bg-opacity-70 flex flex-col items-center justify-center z-10">
-                <ToastContainer />
                 <div className=" text-color min-w-[50%] min-h-[500px] bg-[white] flex flex-col rounded-2xl shadow-xl">
                     <div className="flex p-4 justify-between items-center">
                         <p className="text-2xl font-semibold">Profile photo</p>

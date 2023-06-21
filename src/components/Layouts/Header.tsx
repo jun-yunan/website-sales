@@ -25,7 +25,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
     );
 
     return (
-        <div className="flex items-center justify-between h-[60px] w-[60%] text-white phone:w-[100%] bg-[#161617] overflow-hidden">
+        <div className="flex items-center justify-between h-[60px] w-[70%] text-white phone:w-[100%] bg-[#161617] overflow-hidden">
             <Link href={'/'} className="cursor-pointer">
                 <ShoppingBagIcon style={{ fontSize: '40px' }} />
             </Link>
@@ -78,16 +78,11 @@ const Header: FunctionComponent<HeaderProps> = () => {
                     ) : (
                         <>
                             {data?.user?.avatar || session?.user.image ? (
-                                <div className="flex flex-col items-center justify-center w-[35px] h-[35xp] rounded-full overflow-hidden border-2 border-white hover:opacity-75 transition-all duration-500 ease-in-out">
-                                    <Image
-                                        width={35}
-                                        height={35}
-                                        className="object-cover max-h-[35px]"
-                                        src={
-                                            (data?.user?.avatar as string) ||
-                                            (session?.user?.image as string)
-                                        }
-                                        alt={data?.user?.name as string}
+                                <div className="flex items-center justify-center w-[35px] h-[35px] rounded-[50%] overflow-hidden border-2 border-white hover:opacity-75 transition-all duration-500 ease-in-out">
+                                    <img
+                                        src={(data?.user?.avatar as string) || session?.user.image}
+                                        alt=""
+                                        className="object-cover h-full w-full"
                                     />
                                 </div>
                             ) : (

@@ -5,7 +5,7 @@ interface LoadingSignUpProps {}
 
 const LoadingSignUp: FunctionComponent<LoadingSignUpProps> = () => {
     return (
-        <div className="w-full min-h-[500px] flex flex-col items-center justify-center bg-white">
+        <div className="w-full min-h-[500px] flex flex-col items-center z-20 justify-center bg-white">
             <Loading />
         </div>
     );

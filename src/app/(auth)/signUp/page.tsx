@@ -8,7 +8,7 @@ interface SignUpProps {}
 
 const SignUp: FunctionComponent<SignUpProps> = () => {
     return (
-        <div className="w-full min-h-[500px] bg-white flex items-center flex-col">
+        <div className="w-full h-full flex flex-col">
             <Form />
             <ButtonLogin />
         </div>

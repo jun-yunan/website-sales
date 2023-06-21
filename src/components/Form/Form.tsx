@@ -2,11 +2,14 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import InputField from './InputField';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { userService } from '@/services';
 import { ResultSignUp } from '@/types/users';
+import { useSignUpMutation } from '@/redux/services/userApi';
+import { ToastContainer, toast } from 'react-toastify';
+import { isEntityError } from '@/utils/helpers';
 
 const schema = yup
     .object({
@@ -54,7 +57,8 @@ export interface FormDataState {
 function Form() {
     const router = useRouter();
     const [formData, setFormData] = useState<FormDataState | undefined>(undefined);
-    const [signUp, setSignUp] = useState(null);
+    const [signUp, resultSignUp] = useSignUpMutation();
+    // const [signUp, setSignUp] = useState(null);
     const form = useForm<Inputs>({
         defaultValues: {
             name: '',
@@ -70,51 +74,55 @@ function Form() {
         setFormData(InfoUser);
 
         try {
-            const response = await fetch('http://localhost:3001/api/signup', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(InfoUser),
-            });
-
-            const result: ResultSignUp = await response.json();
-            // console.log(result.email);
-
-            if (result.error) {
-                return alert(result.error);
+            if (InfoUser) {
+                await signUp(InfoUser).unwrap();
             }
-            router.push('/signIn');
         } catch (error) {
             console.error(error);
         }
     };
 
+    useEffect(() => {
+        if (resultSignUp.isSuccess) {
+            toast.success('Tạo tài khoản thành công');
+
+            setTimeout(() => {
+                router.push('/signIn');
+            }, 4000);
+        }
+
+        if (isEntityError(resultSignUp.error)) {
+            toast.error(resultSignUp.error.data.error as string);
+        }
+    }, [resultSignUp, router]);
+
     return (
-        <div className="w-[350px] ">
-            <div className="m-3">
-                <h2 className="font-bol text-slate-700 text-5xl">Sign Up</h2>
-            </div>
-            <div>
-                <form onSubmit={form.handleSubmit(submitForm)} className="flex flex-col">
-                    <div className="m-3 bg-slate-50">
-                        <InputField type="text" name="name" label="Full Name" form={form} />
-                    </div>
-                    <div className="m-3 bg-slate-50">
-                        <InputField type="text" name="email" label="Email" form={form} />
-                    </div>
-                    <div className="m-3 bg-slate-50">
-                        <InputField type="password" name="password" label="Password" form={form} />
-                    </div>
-                    <div className="m-3 bg-slate-50">
-                        <InputField
-                            type="password"
-                            name="confirmPassword"
-                            label="Confirm Password"
-                            form={form}
-                        />
-                    </div>
-                    <button className="btn-primary m-3">Đăng ký</button>
-                </form>
-            </div>
+        <div className="w-full">
+            <form
+                onSubmit={form.handleSubmit(submitForm)}
+                className="flex flex-col w-[40%] phone:w-full"
+            >
+                <div className="mt-8">
+                    <InputField type="text" name="name" label="Full Name" form={form} />
+                </div>
+                <div className="mt-8">
+                    <InputField type="text" name="email" label="Email" form={form} />
+                </div>
+                <div className="mt-8">
+                    <InputField type="password" name="password" label="Password" form={form} />
+                </div>
+                <div className="my-8">
+                    <InputField
+                        type="password"
+                        name="confirmPassword"
+                        label="Confirm Password"
+                        form={form}
+                    />
+                </div>
+                <button className="bg-[#0a66c2] hover:bg-opacity-90 transition-all duration-300 ease-in-out text-white w-[100%] p-2 rounded-lg shadow-md text-xl font-bold mb-4">
+                    Đăng ký
+                </button>
+            </form>
         </div>
     );
 }

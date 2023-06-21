@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
 import Cookies from 'js-cookie';
 import { UploadImage } from '@/types/users';
+import { FormDataState } from '@/components/Form/Form';
 
 export interface FetchResultUser {
     error?: any;
@@ -76,7 +77,23 @@ export const userApi = createApi({
             invalidatesTags: (result, error, data) =>
                 error ? [] : [{ type: 'Posts', id: data._id }],
         }),
+
+        signUp: builder.mutation<
+            { email: string; name: string; message: string; status: boolean },
+            { name: string; password: string; email: string }
+        >({
+            query: (data) => ({
+                url: '/users/signup',
+                method: 'POST',
+                body: data,
+            }),
+        }),
     }),
 });
 
-export const { useGetUserByIdQuery, useUpdateProfileMutation, useUpdateAvatarMutation } = userApi;
+export const {
+    useGetUserByIdQuery,
+    useUpdateProfileMutation,
+    useUpdateAvatarMutation,
+    useSignUpMutation,
+} = userApi;

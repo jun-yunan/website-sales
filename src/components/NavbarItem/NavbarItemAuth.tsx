@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import {
@@ -34,13 +35,18 @@ const NavbarItemAuth: FunctionComponent<NavbarItemAuthProps> = () => {
             <div className="w-full h-full flex justify-between text-color flex-col relative">
                 <div className="w-full h-full mb-2 flex flex-col">
                     <div className="w-[90%] my-2 flex mx-auto self-start bg-white rounded-xl">
-                        <div className="w-[65px] h-[65px] flex flex-col items-center justify-center rounded-full overflow-hidden mr-2">
-                            <Image
+                        <div className="w-[65px] h-[65px] flex flex-col items-center justify-center rounded-[50%] overflow-hidden mr-2">
+                            {/* <Image
                                 src={data?.user?.avatar || session.user.image}
                                 alt={data?.user?.name}
                                 width={65}
                                 height={65}
                                 className="object-cover"
+                            /> */}
+                            <img
+                                src={data.user.avatar || session.user.image}
+                                alt=""
+                                className="object-cover w-full h-full"
                             />
                         </div>
                         <div>

@@ -1,18 +1,14 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
 import FormEditInfo from '@/components/Profile/EditProfile/FormEditInfo';
-import AlertSuccess from '@/components/Alert/AlertSuccess';
-import TransitionAlerts from '@/components/Alert/AlertSuccess';
 
 interface EditInfoUserProps {}
 
 const EditInfoUser: FunctionComponent<EditInfoUserProps> = () => {
     return (
         <div className="fixed w-full z-20 h-full translate-y-[-32px] flex flex-col items-center justify-center bg-[#444] bg-opacity-40">
-            {/* <AlertSuccess /> */}
-
             <div className="relative flex flex-col w-[40%] phone:min-w-[80%] phone:h-[65%] h-[80%] bg-white translate-y-[-32px] rounded-xl shadow-xl px-6 overflow-auto">
                 <div className="flex items-center justify-between">
                     <h2 className="text-2xl my-6 phone:text-xl">Edit Info</h2>

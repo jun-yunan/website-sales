@@ -28,7 +28,8 @@ const InputField: FunctionComponent<InputFieldProps> = (props) => {
                 render={({ field: { onChange, onBlur, value } }) => (
                     <TextField
                         sx={{ width: '100%' }}
-                        placeholder={label}
+                        // placeholder={label}
+                        className="bg-white"
                         onBlur={onBlur}
                         label={label}
                         variant="outlined"

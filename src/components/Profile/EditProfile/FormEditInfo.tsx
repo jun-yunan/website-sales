@@ -9,7 +9,7 @@ import CountrySelect from '../CountrySelect';
 import { useGetUserByIdQuery, useUpdateProfileMutation } from '@/redux/services/userApi';
 import { usePathname } from 'next/navigation';
 import TransitionAlerts from '@/components/Alert/AlertSuccess';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import { isEntityError } from '@/utils/helpers';
 
 interface FormEditInfoProps {}
@@ -64,7 +64,7 @@ const FormEditInfo: FunctionComponent<FormEditInfoProps> = () => {
     useEffect(() => {
         if (resultUpdateProfile.isSuccess) {
             setShowMessage(true);
-
+            toast.success(resultUpdateProfile.data.message, { position: 'bottom-right' });
             setTimeout(() => {
                 setShowMessage(false);
             }, 4000);
@@ -90,7 +90,6 @@ const FormEditInfo: FunctionComponent<FormEditInfoProps> = () => {
 
     return (
         <>
-            <ToastContainer />
             {showMessage && (
                 <TransitionAlerts handleClose={handleClose}>
                     Cập nhật thông tin tài khoản thành công!!!

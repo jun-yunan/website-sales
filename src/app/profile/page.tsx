@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect } from 'react';
+import { FunctionComponent } from 'react';
 import CoverImage from '@/components/Profile/CoverImage';
 import Avatar from '@/components/Profile/Avatar';
 import EditProfile from '@/components/Profile/EditProfile';

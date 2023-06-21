@@ -8,14 +8,14 @@ interface ButtonLoginProps {}
 
 const ButtonLogin: FunctionComponent<ButtonLoginProps> = () => {
     return (
-        <div>
+        <div className="phone:w-full">
             <button
-                className="m-5 bg-white p-2 rounded-lg shadow-lg text-xl font-bold text-slate-700 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75"
+                className="my-5 phone:w-full border border-[#161617] rounded-xl shadow-lg text-lg phone:text-base font-semibold py-2 px-6 text-color flex items-center justify-center hover:bg-neutral-100  transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-opacity-75"
                 onClick={() => signIn('google')}
             >
                 <Image
-                    width="50"
-                    height="50"
+                    width="35"
+                    height="35"
                     src="https://img.icons8.com/color/96/google-logo.png"
                     alt="google-logo"
                 />
