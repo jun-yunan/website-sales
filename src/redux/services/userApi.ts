@@ -2,7 +2,7 @@ import { FormInfoProfile } from '@/components/Profile/EditProfile/FormEditInfo';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
 import Cookies from 'js-cookie';
-import { UploadImage } from '@/types/users';
+import { UploadImage, UserSignIn } from '@/types/users';
 import { FormDataState } from '@/components/Form/Form';
 
 export interface FetchResultUser {
@@ -83,7 +83,15 @@ export const userApi = createApi({
             { name: string; password: string; email: string }
         >({
             query: (data) => ({
-                url: '/users/signup',
+                url: '/users/sign-up',
+                method: 'POST',
+                body: data,
+            }),
+        }),
+
+        signIn: builder.mutation<UserSignIn, { email: string; password: string }>({
+            query: (data) => ({
+                url: '/users/sign-in',
                 method: 'POST',
                 body: data,
             }),
@@ -96,4 +104,5 @@ export const {
     useUpdateProfileMutation,
     useUpdateAvatarMutation,
     useSignUpMutation,
+    useSignInMutation,
 } = userApi;

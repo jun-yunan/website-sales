@@ -1,28 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { ChangeEvent, FormEvent, FunctionComponent, useEffect, useMemo, useState } from 'react';
+import { ChangeEvent, FormEvent, FunctionComponent, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { useAppSelector, useAppDispatch } from '@/redux/hooks';
 import { useGetUserByIdQuery, useUpdateAvatarMutation } from '@/redux/services/userApi';
-import SkeletonAvatar from '../Skeleton/SkeletonAvatar';
 import SkeletonAvatarProfile from '../Skeleton/SkeletonPofile/SkeletonAvatarProfile';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SkeletonLoadingUpdateAvatar from '../Skeleton/SkeletonLoadingUpdateAvatar';
-import { isEntityError } from '@/utils/helpers';
 
 interface AvatarProps {}
 
 const Avatar: FunctionComponent<AvatarProps> = () => {
-    const dispatch = useAppDispatch();
-    const uploadPhoto = useAppSelector((state) => state.profile.resUploadPhoto.result);
     const [updateAvatar, resultUpdateAvatar] = useUpdateAvatarMutation();
     const { data: session, status } = useSession();
-
-    console.log(resultUpdateAvatar);
 
     const { data, isError, isFetching } = useGetUserByIdQuery(
         { _id: session?.user._id as string },
@@ -35,28 +28,7 @@ const Avatar: FunctionComponent<AvatarProps> = () => {
 
     useEffect(() => {
         if (resultUpdateAvatar.isSuccess && resultUpdateAvatar.data.status) {
-            toast.success('Update Avatar Success', {
-                position: 'bottom-right',
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: 'light',
-            });
-        }
-        if (isEntityError(resultUpdateAvatar.error)) {
-            toast.error(resultUpdateAvatar.error.data.error as string, {
-                position: 'bottom-right',
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: 'light',
-            });
+            toast.success('Update avatar successfully!!!');
         }
     }, [resultUpdateAvatar]);
 
@@ -72,9 +44,6 @@ const Avatar: FunctionComponent<AvatarProps> = () => {
             reader.readAsDataURL(file);
         }
     };
-
-    // console.log(selectedFile);
-    // uploadPhoto && console.log(uploadPhoto);
 
     const handleSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -158,31 +127,31 @@ const Avatar: FunctionComponent<AvatarProps> = () => {
 
     return (
         <>
-            {status === 'loading' || isFetching ? (
-                <SkeletonAvatarProfile />
-            ) : (
-                <div className="translate-y-[-130px] phone:translate-y-[-50%] flex items-center flex-col">
-                    <div
-                        onClick={handleUpdateAvatar}
-                        className="w-[152px] h-[152px] phone:w-[100px] phone:h-[100px] cursor-pointer self-start flex flex-col items-center justify-center rounded-full overflow-hidden border-4 border-white"
-                    >
-                        {/* {(status === 'loading' || isFetching) && <SkeletonAvatar avatarProfile />} */}
-
-                        <img
-                            src={data?.user?.avatar as string}
-                            alt={data?.user?.name as string}
-                            className="w-[152px] h-[152px] object-cover"
-                        />
-                    </div>
-                    <div className="flex flex-col max-w-[280px] self-start phone:min-w-[100px] ">
-                        <h2 className="phone:text-base text-2xl font-semibold">
-                            {data?.user?.name}
-                        </h2>
-                        <h2 className="text-2xl font-semibold">--</h2>
-                        <p className="phone:hidden phone:text-sm">{data?.user?.address}</p>
-                    </div>
-                </div>
-            )}
+            <div className="translate-y-[-130px] phone:translate-y-[-50%] flex items-center flex-col">
+                {status === 'loading' || isFetching ? (
+                    <SkeletonAvatarProfile />
+                ) : (
+                    <>
+                        <div
+                            onClick={handleUpdateAvatar}
+                            className="w-[152px] h-[152px] hover:opacity-90 transition-all duration-300 ease-in-out phone:w-[100px] phone:h-[100px] cursor-pointer self-start flex flex-col items-center justify-center rounded-full overflow-hidden border-4 border-white"
+                        >
+                            <img
+                                src={data?.user?.avatar as string}
+                                alt={data?.user?.name as string}
+                                className="w-[152px] h-[152px] object-cover"
+                            />
+                        </div>
+                        <div className="flex flex-col max-w-[280px] self-start phone:min-w-[100px] ">
+                            <h2 className="phone:text-base text-2xl font-semibold">
+                                {data?.user?.name}
+                            </h2>
+                            <h2 className="text-2xl font-semibold">--</h2>
+                            <p className="phone:hidden phone:text-sm">{data?.user?.address}</p>
+                        </div>
+                    </>
+                )}
+            </div>
         </>
     );
 };

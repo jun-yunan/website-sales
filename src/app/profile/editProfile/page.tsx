@@ -8,7 +8,7 @@ interface EditInfoUserProps {}
 
 const EditInfoUser: FunctionComponent<EditInfoUserProps> = () => {
     return (
-        <div className="fixed w-full z-20 h-full translate-y-[-32px] flex flex-col items-center justify-center bg-[#444] bg-opacity-40">
+        <div className="fixed top-[60px] left-0 w-full z-20 h-full flex flex-col items-center justify-center bg-[#444] bg-opacity-40">
             <div className="relative flex flex-col w-[40%] phone:min-w-[80%] phone:h-[65%] h-[80%] bg-white translate-y-[-32px] rounded-xl shadow-xl px-6 overflow-auto">
                 <div className="flex items-center justify-between">
                     <h2 className="text-2xl my-6 phone:text-xl">Edit Info</h2>

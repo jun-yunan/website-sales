@@ -6,7 +6,9 @@ import authReducer from './features/authSlice';
 import { userApi } from './services/userApi';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { rtkQueryErrorLogger } from '@/middleware';
+
 import { postApi } from './services/postsApi';
+// import rtkQueryErrorLogger from '@/middleware';
 
 export const store = configureStore({
     reducer: {

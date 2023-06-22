@@ -7,13 +7,14 @@ import PostItem from './PostItem';
 import { useAppSelector } from '@/redux/hooks';
 import ConfirmDeletePost from './ConfirmDeletePost';
 import { Posts } from '@/types/posts';
+import SkeletonPostItem from '../Skeleton/SkeletonPofile/SkeletonPostItem';
+import { toast } from 'react-toastify';
 
 interface PostProps {}
 
 const Post: FunctionComponent<PostProps> = () => {
     const { data: session, status } = useSession();
     const isShowModel = useAppSelector((state) => state.profile.showModel);
-    const [posts, setPosts] = useState<Posts>();
 
     const { data, isError, isLoading, isSuccess } = useGetPostQuery(
         {
@@ -23,28 +24,33 @@ const Post: FunctionComponent<PostProps> = () => {
         { skip: !session?.user._id || !session.user.accessToken }
     );
 
-    // useEffect(() => {
-    //     if (isSuccess && data.posts && Array.isArray(data.posts)) {
-    //         const sortedPosts = data.posts.sort(
-    //             (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    //         );
-    //         setPosts({ ...data, posts: sortedPosts });
-    //     }
-    // }, [data, isSuccess]);
+    console.log(data);
+    console.log(isError);
+
+    useEffect(() => {
+        if (isError) {
+            toast.error(data?.error);
+        }
+    }, [data, isError]);
 
     return (
         <>
             {isShowModel && <ConfirmDeletePost />}
-            <div className="w-[100%]  text-color flex flex-col items-center">
-                {data?.posts?.map((post) => (
-                    <PostItem
-                        postId={post._id}
-                        key={post._id}
-                        author={post.author}
-                        content={post.content}
-                        image={post.image}
-                    />
-                ))}
+            <div className="w-[60%] phone:w-full h-full text-color flex flex-col items-center">
+                {status === 'loading' ? (
+                    <SkeletonPostItem />
+                ) : (
+                    data?.posts?.map((post) => (
+                        <PostItem
+                            createdAt={post.createdAt}
+                            postId={post._id}
+                            key={post._id}
+                            author={post.author}
+                            content={post.content}
+                            image={post.image}
+                        />
+                    ))
+                )}
             </div>
         </>
     );

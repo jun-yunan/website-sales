@@ -25,7 +25,7 @@ const Header: FunctionComponent<HeaderProps> = () => {
     );
 
     return (
-        <div className="flex items-center justify-between h-[60px] w-[70%] text-white phone:w-[100%] bg-[#161617] overflow-hidden">
+        <div className="flex items-center justify-between h-[60px] w-[70%] tablet:w-[100%] text-white phone:w-[100%] bg-[#161617] overflow-hidden">
             <Link href={'/'} className="cursor-pointer">
                 <ShoppingBagIcon style={{ fontSize: '40px' }} />
             </Link>

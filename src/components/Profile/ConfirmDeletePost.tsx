@@ -48,7 +48,7 @@ const ConfirmDeletePost: FunctionComponent<ConfirmDeletePostProps> = () => {
     }, [dispatch, resultDeletePost]);
 
     return (
-        <div className="w-full phone:w-[150%] phone:h-[70%] h-full bg-slate-300 bg-opacity-40 z-30 text-color text-3xl  fixed flex items-center justify-center">
+        <div className="w-full top-[60px] left-0 phone:w-[150%] phone:h-[70%] h-full bg-neutral-500 bg-opacity-40 z-30 text-color text-3xl  fixed flex items-center justify-center">
             <div className="bg-white mb-[250px] w-[50%] min-h-[30%] flex flex-col items-center rounded-xl shadow-xl p-6">
                 <div className="relative flex items-center w-full">
                     <p className="self-center mx-auto font-semibold phone:text-xl">Xoá bài viết</p>

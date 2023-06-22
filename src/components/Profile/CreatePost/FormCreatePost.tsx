@@ -44,28 +44,30 @@ const FormCreatePost: FunctionComponent<FormCreatePostProps> = () => {
         }
     };
 
-    const handleSubmitForm = (event: FormEvent<HTMLFormElement>) => {
+    const handleSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         if (session?.user._id) {
             const formData = new FormData();
             fileImage && formData.append('image', fileImage);
             formData.append('data', postContent + selectedEmoji);
-            createPost({
-                _id: session?.user._id as string,
-                accessToken: session?.user.accessToken,
-                data: formData,
-            });
+            await toast.promise(
+                createPost({
+                    _id: session?.user._id as string,
+                    accessToken: session?.user.accessToken,
+                    data: formData,
+                }).unwrap(),
+                {
+                    pending: 'Please wait...',
+                    success: 'Create post successfully!!! 👌',
+                    error: 'Create post fail!!! 🤯',
+                }
+            );
         }
     };
 
     useEffect(() => {
         if (resultCreatePost.isSuccess && resultCreatePost.data.status) {
-            // toast.success(resultCreatePost.data.message);
             router.push('/profile');
-        }
-
-        if (resultCreatePost.isLoading) {
-            toast.loading('Loading...');
         }
     }, [resultCreatePost, router]);
 

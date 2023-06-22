@@ -18,6 +18,19 @@ export interface InfoUser {
     birthDay?: string;
 }
 
+export interface UserSignIn {
+    status: boolean;
+    _id: string;
+    email: string;
+    name: string;
+    avatar: string;
+    address: string;
+    numberPhone: string;
+    gender: string;
+    birthDay: string;
+    accessToken: string;
+}
+
 export interface ResultGetUserById {
     error?: any;
     status?: boolean;

@@ -29,21 +29,13 @@ const SignIn: FunctionComponent<SignInProps> = () => {
 
     const submitFormSignIn: SubmitHandler<SignInForm> = async (data) => {
         try {
-            const userSignIn = await signIn('credentials', {
+            await signIn('credentials', {
                 redirect: false,
                 email: data.email,
                 password: data.password,
             });
-
-            if (userSignIn?.error) {
-                toast.error('Đăng nhập không thành công');
-            } else {
-                toast.success('Đăng nhập thành công!!!');
-            }
         } catch (error) {
             console.error(error);
-
-            toast.error(error as string);
         }
     };
 

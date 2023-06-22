@@ -5,8 +5,8 @@ interface SkeletonAvatarProfileProps {}
 
 const SkeletonAvatarProfile: FunctionComponent<SkeletonAvatarProfileProps> = () => {
     return (
-        <div className="animate-pulse translate-y-[-25%] flex items-center flex-col">
-            <div className="w-[152px] h-[152px] cursor-pointer flex flex-col items-center justify-center rounded-full overflow-hidden border-4 border-white">
+        <div className="animate-pulse flex items-center flex-col">
+            <div className="w-[152px] h-[152px] self-start cursor-pointer flex flex-col items-center justify-center rounded-full overflow-hidden border-4 border-white">
                 <SkeletonAvatar avatarProfile />
             </div>
             <div className="flex items-center flex-col w-[200px]">

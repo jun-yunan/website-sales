@@ -14,15 +14,24 @@ import Image from 'next/image';
 import { FunctionComponent, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { profileSlice } from '@/redux/features/profileSlice';
+import dayjs from 'dayjs';
+import 'dayjs/locale/vi';
 
 interface PostItemProps {
     image: string;
     content: string;
     author: { name: string; avatar: string };
     postId: string;
+    createdAt: string;
 }
 
-const PostItem: FunctionComponent<PostItemProps> = ({ image, content, author, postId }) => {
+const PostItem: FunctionComponent<PostItemProps> = ({
+    image,
+    content,
+    author,
+    postId,
+    createdAt,
+}) => {
     const dispatch = useAppDispatch();
     const { data: session, status } = useSession();
     const [showModel, setShowModel] = useState(false);
@@ -36,8 +45,10 @@ const PostItem: FunctionComponent<PostItemProps> = ({ image, content, author, po
 
     const handleEditPost = () => {};
 
+    const localDateTime = dayjs(createdAt).locale('vi').format('DD-MM-YYYY HH:mm');
+
     return (
-        <div className="my-4 bg-white w-[70%] phone:w-full rounded-2xl shadow-xl flex flex-col relative p-6 min-h-[200px]">
+        <div className="my-4 bg-white w-full phone:w-full tablet:w-full rounded-2xl shadow-xl flex flex-col relative p-6 min-h-[200px]">
             <Tippy
                 // visible
                 offset={[10, 0]}
@@ -75,14 +86,6 @@ const PostItem: FunctionComponent<PostItemProps> = ({ image, content, author, po
             </Tippy>
             <div className="flex items-center ">
                 <div className="flex items-center mr-3 justify-center rounded-[50%] overflow-hidden phone:w-[50px] phone:h-[50px] w-[80px] h-[80px]">
-                    {/* <Image
-                        src={author.avatar}
-                        alt=""
-                        width={80}
-                        height={80}
-                        className="object-cover phone:w-[50px] phone:h-[50px]"
-                    /> */}
-
                     <img
                         src={author.avatar}
                         alt={author.name}
@@ -92,7 +95,7 @@ const PostItem: FunctionComponent<PostItemProps> = ({ image, content, author, po
 
                 <div className="flex flex-col items-start h-[65px] phone:h-[45px] justify-between">
                     <p className="text-xl font-medium phone:text-base">{author.name}</p>
-                    <p className="text-xl font-medium phone:text-base">---</p>
+                    <p className="text-base font-medium phone:text-base">{localDateTime}</p>
                 </div>
             </div>
 

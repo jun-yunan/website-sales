@@ -34,8 +34,6 @@ const FormEditInfo: FunctionComponent<FormEditInfoProps> = () => {
     const [currentDate, setCurrentDate] = useState('');
     const [updateProfile, resultUpdateProfile] = useUpdateProfileMutation();
 
-    // console.log('resultUpdateProfile: ', resultUpdateProfile.isSuccess);
-
     useEffect(() => {
         const dateObj = new Date();
         const year = dateObj.getFullYear();
@@ -64,7 +62,6 @@ const FormEditInfo: FunctionComponent<FormEditInfoProps> = () => {
     useEffect(() => {
         if (resultUpdateProfile.isSuccess) {
             setShowMessage(true);
-            toast.success(resultUpdateProfile.data.message, { position: 'bottom-right' });
             setTimeout(() => {
                 setShowMessage(false);
             }, 4000);

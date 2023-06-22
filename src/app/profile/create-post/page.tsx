@@ -10,9 +10,9 @@ import { useSession } from 'next-auth/react';
 import InfoAuthor from '@/components/Profile/CreatePost/InfoAuthor';
 import FormCreatePost from '@/components/Profile/CreatePost/FormCreatePost';
 
-interface CreatePostProps {}
+interface CreatePostPageProps {}
 
-const CreatePost: FunctionComponent<CreatePostProps> = () => {
+const CreatePostPage: FunctionComponent<CreatePostPageProps> = () => {
     const [postContent, setPostContent] = useState('');
     const [showEmoji, setShowEmoji] = useState(false);
     const [selectedEmoji, setSelectedEmoji] = useState('');
@@ -39,7 +39,7 @@ const CreatePost: FunctionComponent<CreatePostProps> = () => {
     };
 
     return (
-        <div className="fixed w-full z-20 h-full translate-y-[-32px] flex flex-col items-center justify-center bg-[#444] bg-opacity-60">
+        <div className="fixed top-[60px] left-0 w-screen z-20 h-full translate-y-[-32px] flex flex-col items-center justify-center bg-[#444] bg-opacity-60">
             <div className="relative flex flex-col w-[40%] phone:min-w-[80%] phone:max-h-[65%] max-h-[80%] translate-y-[-5%] bg-white phone:translate-y-[-25%] rounded-xl shadow-xl px-6">
                 <Link
                     href={'/profile'}
@@ -61,4 +61,4 @@ const CreatePost: FunctionComponent<CreatePostProps> = () => {
     );
 };
 
-export default CreatePost;
+export default CreatePostPage;

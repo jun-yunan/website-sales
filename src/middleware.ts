@@ -1,13 +1,9 @@
-// export default middleware;
-
 import { AnyAction, Middleware, MiddlewareAPI, isRejectedWithValue } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-export default function abc() {}
-
 export function isPayloadErrorMessage(payload: unknown): payload is {
     data: {
-        error: string;
+        error: string | {};
     };
     status: number;
 } {
@@ -15,18 +11,22 @@ export function isPayloadErrorMessage(payload: unknown): payload is {
         typeof payload === 'object' &&
         payload !== null &&
         'data' in payload &&
-        (payload as any).data?.error === 'string'
+        typeof (payload as any).data?.error === 'string'
     );
 }
 
 export const rtkQueryErrorLogger: Middleware =
     (api: MiddlewareAPI) => (next) => (action: AnyAction) => {
         if (isRejectedWithValue(action)) {
-            console.log(action);
+            // console.log(action);
 
             if (isPayloadErrorMessage(action.payload)) {
-                toast.error(action.payload.data.error);
+                toast.error(action.payload.data.error as string);
+                console.log(action);
             }
         }
         return next(action);
     };
+
+const middleware = () => {};
+export default middleware;

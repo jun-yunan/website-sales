@@ -5,7 +5,7 @@ interface LoadingEditProfileProps {}
 
 const LoadingEditProfile: FunctionComponent<LoadingEditProfileProps> = () => {
     return (
-        <div className="w-full min-h-[500px] flex flex-col items-center justify-center bg-white">
+        <div className="fixed top-[60px] left-0 w-full z-20 h-full flex flex-col items-center justify-center bg-[#444] bg-opacity-40">
             <Loading />
         </div>
     );
