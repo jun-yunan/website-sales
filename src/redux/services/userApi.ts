@@ -2,8 +2,9 @@ import { FormInfoProfile } from '@/components/Profile/EditProfile/FormEditInfo';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
 import Cookies from 'js-cookie';
-import { UploadImage, UserSignIn } from '@/types/users';
+import { GetIntroduce, UploadImage, UserSignIn } from '@/types/users';
 import { FormDataState } from '@/components/Form/Form';
+import { FormEditIntroduce } from '@/app/profile/edit-introduce/page';
 
 export interface FetchResultUser {
     error?: any;
@@ -22,6 +23,7 @@ export interface User {
     address: string;
     numberPhone: string;
     avatar: string;
+    coverImage: string;
 }
 
 export const userApi = createApi({
@@ -96,6 +98,48 @@ export const userApi = createApi({
                 body: data,
             }),
         }),
+
+        createIntroduce: builder.mutation<
+            { message: string; request: any },
+            { data: FormEditIntroduce; accessToken: string; userId: string }
+        >({
+            query: ({ accessToken, data, userId }) => ({
+                url: `/users/${userId}/profile/introduce`,
+                method: 'POST',
+                body: data,
+                headers: { authorization: `JWT ${accessToken}` },
+            }),
+            invalidatesTags: (result, error, data) =>
+                error ? [] : [{ type: 'Posts', id: 'introduce' }],
+        }),
+
+        getIntroduceById: builder.query<GetIntroduce, { userId: string; accessToken: string }>({
+            query: ({ accessToken, userId }) => ({
+                url: `/users/${userId}/profile/introduce`,
+                headers: { authorization: `JWT ${accessToken}` },
+            }),
+            providesTags: (result) => {
+                if (result) {
+                    return [
+                        { type: 'Posts' as const, id: 'introduce' },
+                        { type: 'Posts' as const, id: 'LIST' },
+                    ];
+                }
+                return [{ type: 'Posts' as const, id: 'LIST' }];
+            },
+        }),
+        updateCoverImage: builder.mutation<any, { userId: string; accessToken: string; data: any }>(
+            {
+                query: ({ accessToken, data, userId }) => ({
+                    url: `/users/${userId}/profile/cover-image`,
+                    method: 'POST',
+                    headers: { authorization: `JWT ${accessToken}` },
+                    body: data,
+                }),
+                invalidatesTags: (result, error, data) =>
+                    error ? [] : [{ type: 'Posts', id: data.userId }],
+            }
+        ),
     }),
 });
 
@@ -105,4 +149,7 @@ export const {
     useUpdateAvatarMutation,
     useSignUpMutation,
     useSignInMutation,
+    useCreateIntroduceMutation,
+    useGetIntroduceByIdQuery,
+    useUpdateCoverImageMutation,
 } = userApi;

@@ -59,9 +59,44 @@ export const postApi = createApi({
                 headers: { authorization: `JWT ${accessToken}` },
             }),
             invalidatesTags: (result, error, data) =>
-                error ? [] : [{ type: 'GetPosts', id: data.postId }],
+                error
+                    ? []
+                    : [
+                          { type: 'GetPosts', id: data.postId },
+                          { type: 'GetPosts', id: 'imagesProfile' },
+                      ],
+        }),
+
+        getImagesProfileById: builder.query<
+            {
+                message: string;
+                status: boolean;
+                imagesProfile: [
+                    { image: string; _id: string; author: { coverImage: string; _id: string } }
+                ];
+            },
+            { userId: string; accessToken: string }
+        >({
+            query: ({ accessToken, userId }) => ({
+                url: `/users/${userId}/profile/images`,
+                headers: { authorization: `JWT ${accessToken}` },
+            }),
+            providesTags: (result) => {
+                if (result) {
+                    return [
+                        { type: 'GetPosts' as const, id: 'imagesProfile' },
+                        { type: 'GetPosts' as const, id: 'LIST' },
+                    ];
+                }
+                return [{ type: 'GetPosts', id: 'LIST' }];
+            },
         }),
     }),
 });
 
-export const { useCreatePostMutation, useGetPostQuery, useDeletePostMutation } = postApi;
+export const {
+    useCreatePostMutation,
+    useGetPostQuery,
+    useDeletePostMutation,
+    useGetImagesProfileByIdQuery,
+} = postApi;

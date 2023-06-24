@@ -9,6 +9,7 @@ type InitialState = {
     updateInfoProfile: UpdateInfoProfile;
     showModel: boolean;
     postId: string;
+    showUpdateCoverImage: boolean;
 };
 
 interface ResUploadPhoto {
@@ -42,6 +43,7 @@ const initialState = {
 
     showModel: false,
     postId: '',
+    showUpdateCoverImage: false,
 } as InitialState;
 
 export const fetchUploadPhoto = createAsyncThunk('profile/fetchUploadPhoto', async (data: any) => {
@@ -69,6 +71,13 @@ export const profileSlice = createSlice({
         },
         setPostId: (state, action: PayloadAction<string>) => {
             state.postId = action.payload;
+        },
+
+        showUpdateCoverImage: (state) => {
+            state.showUpdateCoverImage = true;
+        },
+        hideUpdateCoverImage: (state) => {
+            state.showUpdateCoverImage = false;
         },
     },
     extraReducers: (builder) => {

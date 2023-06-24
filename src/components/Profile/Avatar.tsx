@@ -127,20 +127,24 @@ const Avatar: FunctionComponent<AvatarProps> = () => {
 
     return (
         <>
-            <div className="translate-y-[-130px] phone:translate-y-[-50%] flex items-center flex-col">
+            <div className="absolute top-[150px] left-[24px] phone:top-[85px] flex items-center flex-col">
                 {status === 'loading' || isFetching ? (
                     <SkeletonAvatarProfile />
                 ) : (
                     <>
                         <div
                             onClick={handleUpdateAvatar}
-                            className="w-[152px] h-[152px] hover:opacity-90 transition-all duration-300 ease-in-out phone:w-[100px] phone:h-[100px] cursor-pointer self-start flex flex-col items-center justify-center rounded-full overflow-hidden border-4 border-white"
+                            className="w-[152px] h-[152px] hover:opacity-90 transition-all duration-300 ease-in-out phone:w-[85px] phone:h-[85px] cursor-pointer self-start flex flex-col items-center justify-center rounded-full overflow-hidden border-4 border-white"
                         >
-                            <img
-                                src={data?.user?.avatar as string}
-                                alt={data?.user?.name as string}
-                                className="w-[152px] h-[152px] object-cover"
-                            />
+                            {data?.user?.avatar ? (
+                                <img
+                                    src={data?.user?.avatar as string}
+                                    alt={data?.user?.name as string}
+                                    className="w-full h-full object-cover"
+                                />
+                            ) : (
+                                <div></div>
+                            )}
                         </div>
                         <div className="flex flex-col max-w-[280px] self-start phone:min-w-[100px] ">
                             <h2 className="phone:text-base text-2xl font-semibold">

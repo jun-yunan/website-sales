@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
 export default function SelectAutoWidth({ value, register }: { value?: string; register: any }) {
-    const [gender, setGender] = React.useState('');
+    const [gender, setGender] = React.useState(value);
 
     const handleChange = (event: SelectChangeEvent) => {
         setGender(event.target.value);
@@ -22,7 +22,7 @@ export default function SelectAutoWidth({ value, register }: { value?: string; r
                     labelId="demo-simple-select-standard-label"
                     name="gender"
                     id="demo-simple-select-standard"
-                    defaultValue={value}
+                    // defaultValue={value}
                     value={gender}
                     onChange={handleChange}
                     label="Gender"

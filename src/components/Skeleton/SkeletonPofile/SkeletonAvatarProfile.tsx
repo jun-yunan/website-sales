@@ -10,9 +10,9 @@ const SkeletonAvatarProfile: FunctionComponent<SkeletonAvatarProfileProps> = () 
                 <SkeletonAvatar avatarProfile />
             </div>
             <div className="flex items-center flex-col w-[200px]">
-                <div className="bg-slate-400 w-full h-6 my-2 rounded-xl"></div>
-                <div className="bg-slate-400 w-[30%] self-start h-4 my-2 rounded-xl"></div>
-                <div className="bg-slate-400 w-full h-4 my-2 rounded-xl"></div>
+                <div className="bg-neutral-300 w-full h-6 my-2 rounded-lg"></div>
+                <div className="bg-neutral-300 w-[30%] self-start h-4 my-2 rounded-lg"></div>
+                <div className="bg-neutral-300 w-full h-4 my-2 rounded-lg"></div>
             </div>
         </div>
     );

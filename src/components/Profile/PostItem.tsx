@@ -16,6 +16,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { profileSlice } from '@/redux/features/profileSlice';
 import dayjs from 'dayjs';
 import 'dayjs/locale/vi';
+import Link from 'next/link';
 
 interface PostItemProps {
     image: string;
@@ -68,13 +69,14 @@ const PostItem: FunctionComponent<PostItemProps> = ({
                                 <FontAwesomeIcon icon={faTrashCan} className="mr-2" />
                                 <p>Xoá bài viết</p>
                             </div>
-                            <div
+                            <Link
+                                href={`/profile/edit-post/${postId}`}
                                 onClick={handleEditPost}
                                 className="flex cursor-pointer px-4 py-2 w-full items-center hover:bg-white hover:text-color"
                             >
                                 <FontAwesomeIcon icon={faPencil} className="mr-2" />
                                 <p>Chỉnh sửa bài viết</p>
-                            </div>
+                            </Link>
                         </div>
                     </div>
                 )}

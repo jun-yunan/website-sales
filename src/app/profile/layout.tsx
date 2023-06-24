@@ -12,11 +12,11 @@ interface LayoutProfileProps {
 const LayoutProfile: FunctionComponent<LayoutProfileProps> = ({ children }) => {
     return (
         <div className="container-light min-h-[700px] bg-[#f5f5f7]">
-            <div className=" w-[70%] m-h-[700px] relative flex items-center flex-col">
-                <div className="w-full min-h-[400px] relative flex items-center flex-col my-4 rounded-xl shadow-xl overflow-hidden">
+            <div className=" w-[70%] m-h-[100px] relative flex items-center flex-col">
+                <div className="w-full h-[500px] phone:h-[400px] relative flex items-center flex-col my-4 rounded-xl shadow-xl">
                     <CoverImage />
-                    <div className="w-[95%] flex-1 flex phone:flex-col justify-between phone:justify-normal mt-4 relative">
-                        <Avatar />
+                    <Avatar />
+                    <div className="w-[95%] h-[250px] flex phone:flex-col justify-center phone:justify-normal mt-4 relative">
                         <CreatePost />
                         <EditProfile />
                     </div>

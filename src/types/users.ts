@@ -1,3 +1,5 @@
+import { FormEditIntroduce } from '@/app/profile/edit-introduce/page';
+
 export interface ResultSignUp {
     error: string;
     email: string;
@@ -55,3 +57,11 @@ export interface ErrorToServer {
 export type CreatePost = ResponseServer;
 
 export type UploadImage = ResponseServer;
+
+export type GetIntroduce = {
+    error?: any;
+    status?: boolean;
+    message?: string;
+    request?: any;
+    introduce: FormEditIntroduce;
+};
