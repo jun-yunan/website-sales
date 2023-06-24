@@ -36,7 +36,7 @@ const handler = NextAuth({
                 // });
 
                 const { data: user } = await axios({
-                    url: 'http://localhost:3001/api/users/sign-in',
+                    url: 'https://web-api-nextjs-app.herokuapp.com/api/users/sign-in',
                     method: 'POST',
                     data: { email: credentials?.email, password: credentials?.password },
                 });
