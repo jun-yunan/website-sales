@@ -23,7 +23,7 @@ const handler = NextAuth({
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials, req) {
-                const res = await fetch('http://localhost:3001/api//users/sign-in', {
+                const res = await fetch('http://localhost:3001/api/users/sign-in', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const handler = NextAuth({
 
                 const user = await res.json();
 
-                if (user.error) return null;
+                // if (user.error) return null;
 
                 if (user) {
                     return user;
@@ -48,7 +48,7 @@ const handler = NextAuth({
     ],
     adapter: MongoDBAdapter(clientPromise),
     pages: {
-        // signIn: '/signIn',
+        signIn: '/signIn',
     },
     session: {
         strategy: 'jwt',

@@ -37,7 +37,7 @@ const Post: FunctionComponent<PostProps> = () => {
         <>
             {isShowModel && <ConfirmDeletePost />}
             <div className="w-[60%] phone:w-full h-full text-color flex flex-col items-center">
-                {status === 'loading' ? (
+                {status === 'loading' || isLoading ? (
                     <SkeletonPostItem />
                 ) : (
                     data?.posts?.map((post) => (

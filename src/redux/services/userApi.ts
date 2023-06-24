@@ -140,6 +140,15 @@ export const userApi = createApi({
                     error ? [] : [{ type: 'Posts', id: data.userId }],
             }
         ),
+        // getAllPost: builder.query<
+        //     { message: string; posts: {} },
+        //     { userId: string; accessToken: string }
+        // >({
+        //     query: ({ accessToken, userId }) => ({
+        //         url: `/users/${userId}/posts`,
+        //         headers: { authorization: `JWT ${accessToken}` },
+        //     }),
+        // }),
     }),
 });
 
@@ -152,4 +161,5 @@ export const {
     useCreateIntroduceMutation,
     useGetIntroduceByIdQuery,
     useUpdateCoverImageMutation,
+    // useGetAllPostQuery,
 } = userApi;

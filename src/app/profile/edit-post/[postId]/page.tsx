@@ -9,6 +9,7 @@ import FormCreatePost from '@/components/Profile/CreatePost/FormCreatePost';
 import InfoAuthor from '@/components/Profile/CreatePost/InfoAuthor';
 import TitleHeader from '@/components/Profile/TitleHeader';
 import HorizontalLine from '@/components/Profile/HorizontalLine';
+import FormEditPost from '@/components/Profile/EditPost/FormEditPost';
 
 interface EditPostPageProps {}
 
@@ -19,7 +20,8 @@ const EditPostPage: FunctionComponent<EditPostPageProps> = () => {
                 <TitleHeader />
                 <HorizontalLine />
                 <InfoAuthor />
-                <FormCreatePost />
+                <FormEditPost />
+                {/* <FormCreatePost /> */}
             </div>
         </div>
     );
