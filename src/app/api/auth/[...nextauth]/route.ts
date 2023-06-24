@@ -4,6 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import EmailProvider from 'next-auth/providers/email';
 import clientPromise from '@/lib/mongodb';
+import axios from 'axios';
 
 const handler = NextAuth({
     providers: [
@@ -23,20 +24,24 @@ const handler = NextAuth({
                 password: { label: 'Password', type: 'password' },
             },
             async authorize(credentials, req) {
-                const res = await fetch('http://localhost:3001/api/users/sign-in', {
+                // const res = await fetch('http://localhost:3001/api/users/sign-in', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify({
+                //         email: credentials?.email,
+                //         password: credentials?.password,
+                //     }),
+                // });
+
+                const { data: user } = await axios({
+                    url: 'http://localhost:3001/api/users/sign-in',
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: credentials?.email,
-                        password: credentials?.password,
-                    }),
+                    data: { email: credentials?.email, password: credentials?.password },
                 });
 
-                const user = await res.json();
-
-                // if (user.error) return null;
+                if (user.error) return null;
 
                 if (user) {
                     return user;
