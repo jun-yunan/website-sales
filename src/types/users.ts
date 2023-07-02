@@ -9,15 +9,19 @@ export interface ResultSignUp {
 }
 
 export interface InfoUser {
-    name?: string;
-    image?: string;
-    email?: string;
-    address?: string;
-    gender?: string;
-    accessToken?: string;
-    numberPhone?: string;
-    avatar?: string;
-    birthDay?: string;
+    _id: string;
+    accessToken: string;
+    refreshToken: string;
+    name: string;
+    email: string;
+    image: string;
+    avatar: string;
+    coverImage: string;
+    exp: number;
+    address: string;
+    gender: string;
+    numberPhone: string;
+    birthDay: string;
 }
 
 export interface UserSignIn {

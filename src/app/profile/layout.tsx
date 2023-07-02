@@ -1,9 +1,11 @@
 import CoverImage from '@/components/Profile/CoverImage';
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 import EditProfile from '@/components/Profile/EditProfile';
 import Introduce from '@/components/Profile/Introduce';
 import Avatar from '@/components/Profile/Avatar';
 import CreatePost from '@/components/Profile/CreatePost';
+import { useSession } from 'next-auth/react';
+import { useAppSelector } from '@/redux/hooks';
 
 interface LayoutProfileProps {
     children: React.ReactNode;

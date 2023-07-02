@@ -22,7 +22,7 @@ export const rtkQueryErrorLogger: Middleware =
 
             if (isPayloadErrorMessage(action.payload)) {
                 toast.error(action.payload.data.error as string);
-                console.log(action);
+                // console.log(action);
             }
         }
         return next(action);

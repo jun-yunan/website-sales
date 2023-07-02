@@ -11,17 +11,26 @@ import TitleHeader from '@/components/Profile/TitleHeader';
 import HorizontalLine from '@/components/Profile/HorizontalLine';
 import FormEditPost from '@/components/Profile/EditPost/FormEditPost';
 
-interface EditPostPageProps {}
+interface EditPostPageProps {
+    params: { postId: string };
+}
 
-const EditPostPage: FunctionComponent<EditPostPageProps> = () => {
+const EditPostPage: FunctionComponent<EditPostPageProps> = ({ params }) => {
     return (
         <div className="fixed top-[60px]  left-0 bg-gray-500 bg-opacity-40 w-full h-full flex flex-col items-center justify-center">
-            <div className="p-6 rounded-xl shadow-xl bg-white translate-y-[-10%] text-color w-[50%] min-h-[500px]">
+            <div className="py-2 px-6 rounded-xl flex flex-col shadow-xl bg-white translate-y-[-5%] phone:translate-y-[-15%] phone:h-[500px] text-color w-[50%] phone:w-[90%] h-[600px] overflow-auto">
                 <TitleHeader />
                 <HorizontalLine />
                 <InfoAuthor />
-                <FormEditPost />
+                <FormEditPost params={params} />
                 {/* <FormCreatePost /> */}
+                <HorizontalLine />
+                <label
+                    htmlFor="submitFormEditPost"
+                    className="py-2 w-[50%] hover:bg-[#161617] hover:text-white cursor-pointer hover-smooth flex items-center justify-center rounded-lg self-end px-8 border-2 border-[#161617] text-color font-semibold text-2xl"
+                >
+                    <p>Save</p>
+                </label>
             </div>
         </div>
     );

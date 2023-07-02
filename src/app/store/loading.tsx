@@ -5,7 +5,7 @@ interface LoadingStoreProps {}
 
 const LoadingStore: FunctionComponent<LoadingStoreProps> = () => {
     return (
-        <div className="w-full min-h-[500px] bg-white">
+        <div className="w-full min-h-[700px] bg-white">
             <Loading />
         </div>
     );

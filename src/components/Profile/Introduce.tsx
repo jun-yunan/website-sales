@@ -51,7 +51,7 @@ const Introduce: FunctionComponent<IntroduceProps> = () => {
         { skip: !session?.user._id }
     );
 
-    console.log(imagesProfile);
+    // console.log(imagesProfile);
 
     return (
         <div className="bg-white flex-shrink-0 phone:hidden w-[39%] overflow-auto my-4 h-[600px] rounded-xl shadow-xl sticky top-[10%] text-color">

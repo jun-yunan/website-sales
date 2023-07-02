@@ -36,7 +36,9 @@ const handler = NextAuth({
                 // });
 
                 const { data: user } = await axios({
-                    url: 'https://web-api-nextjs-app.herokuapp.com/api/users/sign-in',
+                    // url: 'https://web-api-nextjs-app.herokuapp.com/api/users/sign-in',
+                    // url: 'http://localhost:3001/api/users/sign-in',
+                    url: 'http://localhost:3001/api/auth/login',
                     method: 'POST',
                     data: { email: credentials?.email, password: credentials?.password },
                 });
@@ -54,6 +56,7 @@ const handler = NextAuth({
     adapter: MongoDBAdapter(clientPromise),
     pages: {
         signIn: '/signIn',
+        signOut: '/',
     },
     session: {
         strategy: 'jwt',

@@ -6,12 +6,15 @@ import ButtonLogin from '@/components/Button/ButtonLogin';
 import { FunctionComponent, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useAppDispatch } from '@/redux/hooks';
-import { authSlice } from '@/redux/features/authSlice';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { authSlice, setInfoUser, updateRefreshToken } from '@/redux/features/authSlice';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import { TextField } from '@mui/material';
+import axios from 'axios';
+import { useGetUserMutation } from '@/redux/services/authApi';
+import { useGetUserByIdQuery } from '@/redux/services/userApi';
 
 interface SignInProps {}
 
@@ -26,10 +29,16 @@ const SignIn: FunctionComponent<SignInProps> = () => {
     const dispatch = useAppDispatch();
 
     const { register, handleSubmit } = useForm<SignInForm>();
+    const [getUser, { data }] = useGetUserMutation();
+
+    // const { data: user } = useGetUserByIdQuery(
+    //     { _id: session?.user._id as string },
+    //     { skip: !session?.user._id }
+    // );
 
     const submitFormSignIn: SubmitHandler<SignInForm> = async (data) => {
         try {
-            await signIn('credentials', {
+            const user = await signIn('credentials', {
                 redirect: false,
                 email: data.email,
                 password: data.password,
@@ -37,12 +46,22 @@ const SignIn: FunctionComponent<SignInProps> = () => {
         } catch (error) {
             console.error(error);
         }
+
+        // try {
+        //     const user = await axios('http://localhost:3001/api/auth/login', {
+        //         method: 'POST',
+        //         data,
+        //     });
+        // } catch (error) {
+        //     console.error(error);
+        // }
     };
 
     useEffect(() => {
         if (session?.user) {
+            dispatch(setInfoUser(session.user));
+            dispatch(updateRefreshToken(session.user.refreshToken));
             Cookies.set('accessToken', session?.user.accessToken || '');
-            dispatch(authSlice.actions.setToken(session.user.accessToken));
             router.push('/');
         }
     }, [dispatch, router, session]);

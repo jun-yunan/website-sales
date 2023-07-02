@@ -19,10 +19,13 @@ import Image from 'next/image';
 import SettingsIcon from '@mui/icons-material/Settings';
 import LanguageIcon from '@mui/icons-material/Language';
 import { useGetUserByIdQuery } from '@/redux/services/userApi';
+import { useAppDispatch } from '@/redux/hooks';
+import { logOut } from '@/redux/features/authSlice';
 
 interface NavbarItemAuthProps {}
 
 const NavbarItemAuth: FunctionComponent<NavbarItemAuthProps> = () => {
+    const dispatch = useAppDispatch();
     const { data: session, status } = useSession();
 
     const { data, isError, isFetching } = useGetUserByIdQuery(
@@ -92,6 +95,7 @@ const NavbarItemAuth: FunctionComponent<NavbarItemAuthProps> = () => {
                 <button
                     onClick={() => {
                         Cookies.remove('accessToken');
+                        dispatch(logOut());
                         signOut();
                     }}
                     className="w-[90%] mb-2 items-center justify-center self-center flex bg-white rounded-2xl text-lg font-semibold text-[#161617] border-2 border-[#161617] hover:bg-[#161617] hover:text-[white] transition-all duration-500 ease-in-out"

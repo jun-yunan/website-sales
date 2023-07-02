@@ -24,8 +24,8 @@ const Post: FunctionComponent<PostProps> = () => {
         { skip: !session?.user._id || !session.user.accessToken }
     );
 
-    console.log(data);
-    console.log(isError);
+    // console.log(data);
+    // console.log(isError);
 
     useEffect(() => {
         if (isError) {

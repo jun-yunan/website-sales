@@ -13,6 +13,7 @@ declare module 'next-auth' {
             numberPhone: string;
             gender: string;
             birthDay: string;
+            refreshToken: string;
         };
     }
 }

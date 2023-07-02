@@ -5,7 +5,7 @@ interface LoadingHomeProps {}
 
 const LoadingHome: FunctionComponent<LoadingHomeProps> = () => {
     return (
-        <div className="w-full min-h-[500px] flex flex-col items-center justify-center bg-white">
+        <div className="w-full min-h-[800px] flex flex-col items-center justify-center bg-white">
             <Loading />
         </div>
     );
